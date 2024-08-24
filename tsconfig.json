@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "gts/tsconfig-google.json",
+    "@vue/tsconfig/tsconfig.dom.json"
+  ],
+  "include": [
+    "env.d.ts",
+    "**/src/"
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "checkJs": true,
+    "composite": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "dist",
+    "target": "ESNext"
+  }
+}
