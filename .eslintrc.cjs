@@ -4,11 +4,16 @@ const config = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    parser: '@typescript-eslint/parser',
   },
   rules: {
     eqeqeq: ['error', 'always', {null: 'ignore'}],
   },
   overrides: [
+    {
+      files: ['scripts/**/*', 'vite.config.*'],
+      rules: {'n/no-unpublished-import': 'off'},
+    },
     {
       files: ['**/*.html'],
       plugins: ['@html-eslint'],
@@ -51,6 +56,10 @@ const config = {
       files: ['**/*.md'],
       extends: ['plugin:markdownlint/recommended'],
       parser: 'eslint-plugin-markdownlint/parser',
+    },
+    {
+      files: ['**/*.vue'],
+      extends: ['plugin:vue/vue3-recommended'],
     },
     {
       files: ['**/*.yaml'],

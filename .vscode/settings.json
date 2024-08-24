@@ -12,6 +12,7 @@
     "json",
     "jsonc",
     "typescript",
+    "vue",
     "yaml"
   ],
   "files.insertFinalNewline": true,
@@ -36,6 +37,9 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[vue]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[yaml]": {
