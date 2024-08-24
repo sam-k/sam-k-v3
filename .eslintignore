@@ -7,3 +7,4 @@
 !.prettierrc.*
 !.stylelintrc.*
 !.vscode/
+!env.d.ts
