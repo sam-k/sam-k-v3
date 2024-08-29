@@ -1,0 +1,104 @@
+@import url('./base.css');
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+  margin: 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  text-rendering: optimizelegibility;
+}
+
+#app {
+  font-weight: normal;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+p {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
+  &:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  &:not(.noHover) {
+    padding: 1px 4px;
+    margin: -1px -4px;
+    text-decoration: underline var(--color-border) solid 2px;
+    background-image: linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-accent-1) 40%, transparent) 0%,
+        color-mix(in srgb, var(--color-accent-1) 40%, transparent) 50%,
+        transparent 50%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-accent-2) 40%, transparent) 0%,
+        color-mix(in srgb, var(--color-accent-2) 40%, transparent) 50%,
+        transparent 50%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-accent-3) 40%, transparent) 0%,
+        color-mix(in srgb, var(--color-accent-3) 40%, transparent) 50%,
+        transparent 50%,
+        transparent 100%
+      );
+    background-size: 200% 33.3333%;
+    background-position:
+      right 0%,
+      right 50%,
+      right 100%;
+    background-repeat: no-repeat;
+    transition:
+      background-position var(--underline-transition-speed),
+      text-decoration var(--underline-transition-speed);
+
+    &:hover {
+      text-decoration-color: transparent;
+      background-position:
+        left 0%,
+        left 50%,
+        left 100%;
+    }
+  }
+}
