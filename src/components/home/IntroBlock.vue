@@ -23,6 +23,7 @@
       <span :class="$style.contactsHeader">Daytime Service</span>
       <ul :class="$style.contacts">
         <li>
+          <!-- TODO: Fetch from data. -->
           <LegendItem
             label="email@email.com"
             link="mailto:email@email.com"
@@ -32,6 +33,7 @@
           </LegendItem>
         </li>
         <li>
+          <!-- TODO: Fetch from data. -->
           <LegendItem
             label="linkedin.com/in/linkedin"
             link="https://www.linkedin.com/in/linkedin"
@@ -41,6 +43,7 @@
           </LegendItem>
         </li>
         <li>
+          <!-- TODO: Fetch from data. -->
           <LegendItem
             label="github.com/github"
             link="https://github.com/github"
@@ -50,6 +53,7 @@
           </LegendItem>
         </li>
         <li>
+          <!-- TODO: Fetch from data. -->
           <LegendItem
             label="ko-fi.com/kofi"
             link="https://ko-fi.com/kofi"

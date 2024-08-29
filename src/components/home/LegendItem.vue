@@ -26,26 +26,30 @@
     display: flex;
     align-items: center;
     column-gap: 1rem;
+
+    --legend-stop-diameter: 1.75rem;
+    --legend-line-length: 4rem;
+    --legend-line-thickness: 0.5rem;
   }
 
   .bullet {
-    height: 1.75rem;
+    height: var(--legend-stop-diameter);
   }
 
   .line {
     position: relative;
-    top: 0.625rem;
-    width: 4rem;
-    height: 0.5rem;
+    top: calc((var(--legend-stop-diameter) - var(--legend-line-thickness)) / 2);
+    width: var(--legend-line-length);
+    height: var(--legend-line-thickness);
     background-color: v-bind(color);
   }
 
   .stop {
     position: relative;
-    top: -0.5rem;
-    left: 1.125rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    top: calc(-1 * var(--legend-line-thickness));
+    left: calc((var(--legend-line-length) - var(--legend-stop-diameter)) / 2);
+    width: var(--legend-stop-diameter);
+    height: var(--legend-stop-diameter);
     display: flex;
     align-items: center;
     justify-content: center;

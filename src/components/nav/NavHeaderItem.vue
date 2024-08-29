@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 0.375rem;
+    row-gap: var(--nav-underline-thickness);
     padding: 0.25rem;
     width: 4rem;
 
@@ -33,12 +33,13 @@
         outline-color:
           color-mix(in srgb, v-bind(color) 25%, var(--color-background));
         outline-style: solid;
-        outline-width: 0.375rem;
+        outline-width: var(--nav-underline-thickness);
       }
 
       .label {
         color: var(--color-text);
-        text-decoration: underline v-bind(color) solid 0.375rem;
+        text-decoration:
+          underline v-bind(color) solid var(--nav-underline-thickness);
       }
     }
   }

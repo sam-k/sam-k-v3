@@ -2,7 +2,6 @@
 const config = {
   extends: ['stylelint-config-standard'],
   rules: {
-    'comment-empty-line-before': 'never',
     'selector-class-pattern': '',
     'property-no-vendor-prefix': [
       true,
