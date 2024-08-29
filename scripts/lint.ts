@@ -21,18 +21,26 @@ const main = async () => {
   const shouldFix = Boolean(argv.fix);
 
   try {
-    await spawnCmd('eslint', [
-      '.',
-      '--ext',
-      ESLINT_EXTS.map(ext => `.${ext}`).join(','),
-      '--no-error-on-unmatched-pattern',
-      shouldFix ? '--fix' : undefined,
-    ]);
-    await spawnCmd('stylelint', [
-      `**/*.{${STYLELINT_EXTS.join(',')}}`,
-      '--allow-empty-input',
-      shouldFix ? '--fix' : undefined,
-    ]);
+    if (ESLINT_EXTS.length) {
+      await spawnCmd('eslint', [
+        '.',
+        '--ext',
+        ESLINT_EXTS.map(ext => `.${ext}`).join(','),
+        '--no-error-on-unmatched-pattern',
+        shouldFix ? '--fix' : undefined,
+      ]);
+    }
+    if (STYLELINT_EXTS.length) {
+      await spawnCmd('stylelint', [
+        `**/*.${
+          STYLELINT_EXTS.length === 1
+            ? STYLELINT_EXTS[0]
+            : `{${STYLELINT_EXTS.join(',')}}`
+        }`,
+        '--allow-empty-input',
+        shouldFix ? '--fix' : undefined,
+      ]);
+    }
   } catch (err) {
     console.error(err);
   }

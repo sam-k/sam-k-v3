@@ -15,7 +15,7 @@ const config = {
       rules: {'n/no-unpublished-import': 'off'},
     },
     {
-      files: ['**/*.html'],
+      files: ['**/*.html', '**/*.vue'],
       plugins: ['@html-eslint'],
       extends: ['plugin:@html-eslint/recommended'],
       parser: '@html-eslint/parser',
@@ -60,6 +60,17 @@ const config = {
     {
       files: ['**/*.vue'],
       extends: ['plugin:vue/vue3-recommended'],
+      rules: {
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/max-attributes-per-line': [
+          'warn',
+          {
+            singleline: {max: 1000},
+            multiline: {max: 1},
+          },
+        ],
+        'vue/multiline-html-element-content-newline': 'off',
+      },
     },
     {
       files: ['**/*.yaml'],

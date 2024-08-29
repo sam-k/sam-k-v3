@@ -4,6 +4,10 @@ const config = {
   rules: {
     'comment-empty-line-before': 'never',
     'selector-class-pattern': '',
+    'property-no-vendor-prefix': [
+      true,
+      {ignoreProperties: ['box-decoration-break']},
+    ],
   },
 };
 
