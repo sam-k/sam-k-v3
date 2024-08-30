@@ -59,9 +59,17 @@ a {
   }
 
   &:not(.noHover) {
-    padding: 1px 4px;
-    margin: -1px -4px;
-    text-decoration: underline var(--color-border) solid 2px;
+    &:not(.noPadding) {
+      padding: 1px 4px;
+    }
+
+    &:not(.noMargin) {
+      margin: -1px -4px;
+    }
+
+    &:not(.noUnderline) {
+      text-decoration: underline var(--color-border) solid 2px;
+    }
 
     /*
      * Left-to-right triple-layered highlight transition.
@@ -95,7 +103,11 @@ a {
         transparent 50%,
         transparent 100%
       );
-    background-size: 200% calc(100% / 3);
+
+    /*
+     * Extra 2% width to make sure background doesn't bleed out of the element.
+     */
+    background-size: 202% calc(100% / 3);
     background-position:
       right 0%,
       right 50%,
@@ -106,7 +118,10 @@ a {
       text-decoration var(--underline-transition-speed);
 
     &:hover {
-      text-decoration-color: transparent;
+      &:not(.noUnderline) {
+        text-decoration-color: transparent;
+      }
+
       background-position:
         left 0%,
         left 50%,

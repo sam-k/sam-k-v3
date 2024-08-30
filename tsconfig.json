@@ -9,6 +9,7 @@
     "src/**/*.vue"
   ],
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "composite": true,

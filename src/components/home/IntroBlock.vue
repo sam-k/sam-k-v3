@@ -16,7 +16,7 @@
       </p>
       <p>
         If some of the work I’ve done or projects I’ve built interests you, feel
-        free to get in touch!
+        free to get in touch.
       </p>
     </div>
     <div :class="$style.contactsContainer">
