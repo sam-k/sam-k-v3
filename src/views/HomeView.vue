@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import ExperienceBlock from '../components/home/ExperienceBlock.vue';
+  import ExperiencesBlock from '../components/home/ExperiencesBlock.vue';
   import IntroBlock from '../components/home/IntroBlock.vue';
   import NotesBlock from '../components/home/NotesBlock.vue';
   import ProjectsBlock from '../components/home/ProjectsBlock.vue';
@@ -10,7 +10,7 @@
     <IntroBlock />
     <ProjectsBlock />
     <NotesBlock />
-    <ExperienceBlock />
+    <ExperiencesBlock />
     <!-- TODO: Implement other blocks. -->
   </main>
 </template>
