@@ -3,7 +3,7 @@
   import type {LinkType} from './utils.ts';
 
   defineProps<{
-    name: string;
+    title: string;
     description: string;
     icons?: Array<{
       kind: LinkType;
@@ -23,7 +23,7 @@
     <div :class="$style.testImg" />
     <div :class="$style.textContainer">
       <div :class="$style.titleContainer">
-        <span :class="$style.projectName">{{ name }}</span>
+        <h3>{{ title }}</h3>
         <ul>
           <ProjectIconItem
             v-for="icon in icons"
@@ -69,11 +69,6 @@
     align-items: center;
     column-gap: 0.5rem;
 
-    .projectName {
-      font-weight: 600;
-      font-size: 1.3rem;
-    }
-
     ul {
       display: flex;
       column-gap: 0.5rem;
@@ -91,6 +86,7 @@
     a {
       background-color: var(--color-background-mute);
       text-decoration: none;
+      text-wrap: nowrap;
     }
   }
 </style>

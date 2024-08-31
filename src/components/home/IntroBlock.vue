@@ -72,7 +72,6 @@
     display: flex;
     justify-content: space-between;
     column-gap: 3rem;
-    padding: 5rem 0;
   }
 
   .textContainer {
