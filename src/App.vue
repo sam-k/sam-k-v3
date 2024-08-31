@@ -2,9 +2,6 @@
   import {RouterLink, RouterView} from 'vue-router';
   import BusIcon from './components/icons/BusIcon.vue';
   import NavHeaderItem from './components/nav/NavHeaderItem.vue';
-
-  /** Height of the nav container. */
-  const navHeight = '5.6875rem';
 </script>
 
 <template>
@@ -33,6 +30,15 @@
     </div>
   </header>
   <RouterView :class="[$style.container, $style.viewContainer]" />
+  <footer>
+    <div :class="[$style.container, $style.footerContainer]">
+      <span>Map not to scale</span>
+      <span>•</span>
+      <span>© 2024 Sam Kim</span>
+      <span>•</span>
+      <a href="https://github.com/sam-k/sam-k-v3">Under the hood ↗</a>
+    </div>
+  </footer>
 </template>
 
 <style module>
@@ -42,7 +48,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: v-bind(navHeight);
+    height: var(--nav-height);
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-background);
     line-height: 1;
@@ -50,14 +56,14 @@
 
   .container {
     max-width: var(--max-width);
-    margin: 0 auto;
   }
 
   .navContainer {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 0;
+    margin: 0 auto;
 
     --nav-underline-thickness: 0.375rem;
   }
@@ -87,6 +93,21 @@
   }
 
   .viewContainer {
-    margin-top: v-bind(navHeight);
+    margin: calc(var(--nav-height) + 5rem) auto 5rem auto;
+  }
+
+  footer {
+    width: 100%;
+    height: var(--nav-height);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footerContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+    margin: 0 auto;
   }
 </style>

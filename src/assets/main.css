@@ -19,10 +19,11 @@ body {
     sans-serif;
   font-size: 16px;
   text-rendering: optimizelegibility;
+
+  --nav-height: 5.6875rem;
 }
 
 #app {
-  padding: 5rem 0;
   font-weight: normal;
 }
 

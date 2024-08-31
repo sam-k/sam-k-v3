@@ -11,7 +11,6 @@
     <ProjectsBlock />
     <NotesBlock />
     <ExperiencesBlock />
-    <!-- TODO: Implement other blocks. -->
   </main>
 </template>
 
