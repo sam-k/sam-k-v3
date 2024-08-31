@@ -34,7 +34,7 @@
 
   /* Miscellaneous lobal variables. */
   --max-width: 800px;
-  --rounded-rectangle-border-radius: 9999px;
+  --rounded-rectangle-border-radius: 999999px;
   --underline-transition-speed: 250ms;
 }
 

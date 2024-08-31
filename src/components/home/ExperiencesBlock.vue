@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import type {TagDefinition} from '../common/utils.ts';
   import ExperienceItem from '../experiences/ExperienceItem.vue';
+  import SectionLabel from './SectionLabel.vue';
 
   // TODO: Fetch from data.
   const experiences: Array<{
@@ -43,7 +44,7 @@
 
 <template>
   <div :class="$style.container">
-    <h2>Experience</h2>
+    <SectionLabel label="Experience" :index="2" />
     <ul :class="$style.experiences">
       <ExperienceItem
         v-for="experience in experiences"
@@ -63,20 +64,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-
-    /* Line on background. */
-    h2::before {
-      left: calc(
-        var(--bg-rightmost-line-left-pos) - 2 *
-          (var(--bg-line-width) + var(--bg-line-gap))
-      );
-      border-color: var(--color-accent-1);
-    }
-
-    /* Stop on background. */
-    h2::after {
-      width: var(--bg-line-width);
-    }
   }
 
   .experiences {

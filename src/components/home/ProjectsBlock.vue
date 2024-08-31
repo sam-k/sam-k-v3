@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import ProjectItem from '../projects/ProjectItem.vue';
   import type {LinkType} from '../projects/utils.ts';
+  import SectionLabel from './SectionLabel.vue';
 
   // TODO: Fetch from data.
   const projects: Array<{
@@ -53,7 +54,7 @@
 
 <template>
   <div :class="$style.container">
-    <h2>Projects</h2>
+    <SectionLabel label="Projects" :index="0" />
     <ul :class="$style.projects">
       <ProjectItem
         v-for="project in projects"
@@ -72,17 +73,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-
-    /* Line on background. */
-    h2::before {
-      left: var(--bg-rightmost-line-left-pos);
-      border-color: var(--color-accent-3);
-    }
-
-    /* Stop on background. */
-    h2::after {
-      width: calc(3 * var(--bg-line-width) + 2 * var(--bg-line-gap));
-    }
   }
 
   .projects {
@@ -91,4 +81,3 @@
     row-gap: 2rem;
   }
 </style>
-

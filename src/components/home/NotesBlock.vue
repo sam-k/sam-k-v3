@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import NoteItem from '../notes/NoteItem.vue';
+  import SectionLabel from './SectionLabel.vue';
 
   // TODO: Fetch from data.
   const notes: Array<{
@@ -34,7 +35,7 @@
 
 <template>
   <div :class="$style.container">
-    <h2>Notes</h2>
+    <SectionLabel label="Notes" :index="1" />
     <ul :class="$style.notes">
       <NoteItem
         v-for="note in notes"
@@ -53,20 +54,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
-
-    /* Line on background. */
-    h2::before {
-      left: calc(
-        var(--bg-rightmost-line-left-pos) -
-          (var(--bg-line-width) + var(--bg-line-gap))
-      );
-      border-color: var(--color-accent-2);
-    }
-
-    /* Stop on background. */
-    h2::after {
-      width: calc(2 * var(--bg-line-width) + var(--bg-line-gap));
-    }
   }
 
   .notes {
