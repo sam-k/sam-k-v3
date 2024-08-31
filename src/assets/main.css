@@ -74,11 +74,11 @@ a {
       margin: -1px -4px;
     }
 
-    &:not(.noUnderline) {
-      text-decoration: underline var(--color-border) solid 2px;
-    }
-
     &[href] {
+      &:not(.noUnderline) {
+        text-decoration: underline var(--color-border) solid 2px;
+      }
+
       /*
        * Left-to-right triple-layered highlight transition.
        *

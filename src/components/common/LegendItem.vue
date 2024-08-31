@@ -17,7 +17,7 @@
         <slot />
       </div>
     </div>
-    <a>{{ label }}</a>
+    <a :href="link">{{ label }}</a>
   </a>
 </template>
 
