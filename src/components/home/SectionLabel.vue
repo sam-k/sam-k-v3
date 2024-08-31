@@ -6,19 +6,7 @@
 
   const leftIndex = props.index;
   const rightIndex = 2 - props.index;
-
-  let lineColor: string;
-  switch (props.index) {
-    case 0:
-      lineColor = 'var(--color-accent-1)';
-      break;
-    case 1:
-      lineColor = 'var(--color-accent-2)';
-      break;
-    case 2:
-      lineColor = 'var(--color-accent-3)';
-      break;
-  }
+  const lineColor = `var(--color-accent-${props.index + 1})`;
 </script>
 
 <template>
@@ -36,16 +24,8 @@
 
     --line-width: 12px;
     --line-gap: calc(var(--line-width) / 2);
-    --stop-border-width: var(--line-gap);
 
     --gutter-center-x-offset: calc((var(--max-width) - 100vw) / 4);
-    --gutter-innermost-x-offset: min(
-      calc(
-        var(--gutter-center-x-offset) + 0.5 * var(--line-width) +
-          var(--line-gap)
-      ),
-      -3 * var(--line-width) - 2 * var(--line-gap)
-    );
   }
 
   .backgroundLine,
@@ -68,12 +48,20 @@
       height: 999999px;
       border-left-width: var(--line-width);
       border-left-style: solid;
+
+      --gutter-innermost-line-x-offset: min(
+        calc(
+          var(--gutter-center-x-offset) + 0.5 * var(--line-width) +
+            var(--line-gap)
+        ),
+        -3 * var(--line-width) - 2 * var(--line-gap)
+      );
     }
 
     &::before {
       bottom: calc(0.5em - var(--line-width) / 4);
       left: calc(
-        var(--gutter-innermost-x-offset) - v-bind(leftIndex) *
+        var(--gutter-innermost-line-x-offset) - v-bind(leftIndex) *
           (var(--line-width) + var(--line-gap))
       );
       border-color: v-bind(lineColor);
@@ -82,7 +70,7 @@
     &::after {
       top: calc(0.5em - var(--line-width) / 4);
       right: calc(
-        var(--gutter-innermost-x-offset) - v-bind(rightIndex) *
+        var(--gutter-innermost-line-x-offset) - v-bind(rightIndex) *
           (var(--line-width) + var(--line-gap))
       );
       border-color: v-bind(lineColor);
@@ -98,14 +86,19 @@
       background-color: var(--color-background);
       border: var(--stop-border-width) solid var(--color-text);
       border-radius: var(--rounded-rectangle-border-radius);
+
+      --stop-border-width: var(--line-gap);
+      --gutter-stop-x-offset: min(
+        calc(
+          var(--gutter-center-x-offset) - 1.5 * var(--line-width) -
+            var(--line-gap) - var(--stop-border-width)
+        ),
+        -3 * var(--line-width) - 2 * var(--line-gap)
+      );
     }
 
     &::before {
-      left: calc(
-        var(--gutter-innermost-x-offset) - 2 *
-          (var(--line-width) + var(--line-gap)) -
-          var(--stop-border-width)
-      );
+      left: var(--gutter-stop-x-offset);
       width: calc(
         (v-bind(rightIndex) + 1) * var(--line-width) + v-bind(rightIndex) *
           var(--line-gap)
@@ -113,11 +106,7 @@
     }
 
     &::after {
-      right: calc(
-        var(--gutter-innermost-x-offset) - 2 *
-          (var(--line-width) + var(--line-gap)) -
-          var(--stop-border-width)
-      );
+      right: var(--gutter-stop-x-offset);
       width: calc(
        (v-bind(leftIndex) + 1) * var(--line-width) + v-bind(leftIndex) *
           var(--line-gap)

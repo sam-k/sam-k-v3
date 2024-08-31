@@ -24,7 +24,7 @@
       </h3>
       <span>{{ dateRange }}</span>
     </div>
-    <span>{{ description }}</span>
+    <p>{{ description }}</p>
     <TagsContainer :tags="tags" />
   </li>
 </template>

@@ -33,7 +33,7 @@
           />
         </ul>
       </div>
-      <p :class="$style.description">{{ description }}</p>
+      <p>{{ description }}</p>
       <TagContainer :tags="tags" />
     </div>
   </li>
