@@ -93,22 +93,28 @@ a {
        */
       background-image: linear-gradient(
           to right,
-          color-mix(in srgb, var(--color-accent-1) 40%, transparent) 0%,
-          color-mix(in srgb, var(--color-accent-1) 40%, transparent) 50%,
+          color-mix(in srgb, var(--color-accent-1) 40%, var(--color-background))
+            0%,
+          color-mix(in srgb, var(--color-accent-1) 40%, var(--color-background))
+            50%,
           transparent 50%,
           transparent 100%
         ),
         linear-gradient(
           to right,
-          color-mix(in srgb, var(--color-accent-2) 40%, transparent) 0%,
-          color-mix(in srgb, var(--color-accent-2) 40%, transparent) 50%,
+          color-mix(in srgb, var(--color-accent-2) 40%, var(--color-background))
+            0%,
+          color-mix(in srgb, var(--color-accent-2) 40%, var(--color-background))
+            50%,
           transparent 50%,
           transparent 100%
         ),
         linear-gradient(
           to right,
-          color-mix(in srgb, var(--color-accent-3) 40%, transparent) 0%,
-          color-mix(in srgb, var(--color-accent-3) 40%, transparent) 50%,
+          color-mix(in srgb, var(--color-accent-3) 40%, var(--color-background))
+            0%,
+          color-mix(in srgb, var(--color-accent-3) 40%, var(--color-background))
+            50%,
           transparent 50%,
           transparent 100%
         );
