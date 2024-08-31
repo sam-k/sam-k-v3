@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import TagContainer from '../common/TagsContainer.vue';
+  import type {TagDefinition} from '../common/utils.ts';
   import ProjectIconItem from './ProjectIconItem.vue';
   import type {LinkType} from './utils.ts';
 
@@ -10,10 +12,7 @@
       label?: string;
       link?: string;
     }>;
-    tags?: Array<{
-      label: string;
-      link?: string;
-    }>;
+    tags?: TagDefinition[];
   }>();
 </script>
 
@@ -34,14 +33,8 @@
           />
         </ul>
       </div>
-      <span :class="$style.description">{{ description }}</span>
-      <ul :class="$style.tags">
-        <template v-for="tag in tags" :key="tag.label">
-          <li>
-            <a class="noMargin noUnderline" :href="tag.link">{{ tag.label }}</a>
-          </li>
-        </template>
-      </ul>
+      <p :class="$style.description">{{ description }}</p>
+      <TagContainer :tags="tags" />
     </div>
   </li>
 </template>
@@ -72,21 +65,6 @@
     ul {
       display: flex;
       column-gap: 0.5rem;
-    }
-  }
-
-  .description {
-    font-size: 1.2rem;
-  }
-
-  .tags {
-    display: flex;
-    column-gap: 0.5rem;
-
-    a {
-      background-color: var(--color-background-mute);
-      text-decoration: none;
-      text-wrap: nowrap;
     }
   }
 </style>

@@ -3,7 +3,7 @@
   import GitHubIcon from '../icons/GitHubIcon.vue';
   import KoFiIcon from '../icons/HeartBoxIcon.vue';
   import LinkedInIcon from '../icons/LinkedInIcon.vue';
-  import LegendItem from './LegendItem.vue';
+  import LegendItem from '../common/LegendItem.vue';
 </script>
 
 <template>

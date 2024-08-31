@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import TagsContainer from '../common/TagsContainer.vue';
+import type {TagDefinition} from '../common/utils.ts';
+
   defineProps<{
     title: string;
     date: Date;
     link?: string;
-    tags?: Array<{
-      label: string;
-      link?: string;
-    }>;
+    tags?: TagDefinition[];
   }>();
 </script>
 
@@ -16,13 +16,7 @@
       <h3>
         <a :href="link">{{ title }}</a>
       </h3>
-      <ul :class="$style.tags">
-        <template v-for="tag in tags" :key="tag.label">
-          <li>
-            <a class="noMargin noUnderline" :href="tag.link">{{ tag.label }}</a>
-          </li>
-        </template>
-      </ul>
+      <TagsContainer :tags="tags" />
     </div>
     <span>{{ date.getUTCFullYear() }}</span>
   </li>
@@ -40,17 +34,5 @@
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
-  }
-
-  .tags {
-    display: flex;
-    align-items: center;
-    column-gap: 0.5rem;
-
-    a {
-      background-color: var(--color-background-mute);
-      text-decoration: none;
-      text-wrap: nowrap;
-    }
   }
 </style>
