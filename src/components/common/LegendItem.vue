@@ -6,7 +6,7 @@
     iconColor?: string;
   }>();
 
-  const iconColor = props.iconColor || 'white';
+  const iconColor = props.iconColor || 'var(--color-background)';
 </script>
 
 <template>

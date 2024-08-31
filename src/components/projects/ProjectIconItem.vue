@@ -49,6 +49,7 @@
     svg {
       width: 1.3rem;
       height: 1.3rem;
+      fill: var(--color-text);
     }
   }
 </style>
