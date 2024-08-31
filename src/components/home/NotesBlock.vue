@@ -53,6 +53,20 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+
+    /* Line on background. */
+    h2::before {
+      left: calc(
+        var(--bg-rightmost-line-left-pos) -
+          (var(--bg-line-width) + var(--bg-line-gap))
+      );
+      border-color: var(--color-accent-2);
+    }
+
+    /* Stop on background. */
+    h2::after {
+      width: calc(2 * var(--bg-line-width) + var(--bg-line-gap));
+    }
   }
 
   .notes {

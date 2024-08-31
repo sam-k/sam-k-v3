@@ -43,7 +43,7 @@
 
 <style module>
   header {
-    z-index: 9999;
+    z-index: var(--nav-z-index);
     position: fixed;
     top: 0;
     left: 0;

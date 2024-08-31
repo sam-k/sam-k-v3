@@ -63,6 +63,20 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+
+    /* Line on background. */
+    h2::before {
+      left: calc(
+        var(--bg-rightmost-line-left-pos) - 2 *
+          (var(--bg-line-width) + var(--bg-line-gap))
+      );
+      border-color: var(--color-accent-1);
+    }
+
+    /* Stop on background. */
+    h2::after {
+      width: var(--bg-line-width);
+    }
   }
 
   .experiences {

@@ -72,6 +72,17 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+
+    /* Line on background. */
+    h2::before {
+      left: var(--bg-rightmost-line-left-pos);
+      border-color: var(--color-accent-3);
+    }
+
+    /* Stop on background. */
+    h2::after {
+      width: calc(3 * var(--bg-line-width) + 2 * var(--bg-line-gap));
+    }
   }
 
   .projects {
