@@ -7,20 +7,16 @@
   const leftIndex = props.index;
   const rightIndex = 2 - props.index;
 
-  let leftLineColor: string;
-  let rightLineColor: string;
+  let lineColor: string;
   switch (props.index) {
     case 0:
-      leftLineColor = 'var(--color-accent-3)';
-      rightLineColor = 'var(--color-accent-1)';
+      lineColor = 'var(--color-accent-1)';
       break;
     case 1:
-      leftLineColor = 'var(--color-accent-2)';
-      rightLineColor = 'var(--color-accent-2)';
+      lineColor = 'var(--color-accent-2)';
       break;
     case 2:
-      leftLineColor = 'var(--color-accent-1)';
-      rightLineColor = 'var(--color-accent-3)';
+      lineColor = 'var(--color-accent-3)';
       break;
   }
 </script>
@@ -80,7 +76,7 @@
         var(--gutter-innermost-x-offset) - v-bind(leftIndex) *
           (var(--line-width) + var(--line-gap))
       );
-      border-color: v-bind(leftLineColor);
+      border-color: v-bind(lineColor);
     }
 
     &::after {
@@ -89,7 +85,7 @@
         var(--gutter-innermost-x-offset) - v-bind(rightIndex) *
           (var(--line-width) + var(--line-gap))
       );
-      border-color: v-bind(rightLineColor);
+      border-color: v-bind(lineColor);
     }
   }
 
