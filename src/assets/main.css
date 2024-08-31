@@ -22,6 +22,7 @@ body {
 }
 
 #app {
+  padding: 5rem 0;
   font-weight: normal;
 }
 
@@ -33,6 +34,12 @@ h1 {
 h2 {
   margin: 0;
   font-size: 2rem;
+}
+
+h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 p {
@@ -71,53 +78,56 @@ a {
       text-decoration: underline var(--color-border) solid 2px;
     }
 
-    /*
-     * Left-to-right triple-layered highlight transition.
-     *
-     * We set up a 200%-width two-window background, half colored and half
-     * empty, pushed against the right edge so the empty window is shown by
-     * default.
-     *
-     * Upon hover, we move this background to be pushed against the left edge,
-     * showing the colored window and creating the illusion of colors sliding in
-     * from left to right.
-     */
-    background-image: linear-gradient(
-        to right,
-        color-mix(in srgb, var(--color-accent-1) 40%, transparent) 0%,
-        color-mix(in srgb, var(--color-accent-1) 40%, transparent) 50%,
-        transparent 50%,
-        transparent 100%
-      ),
-      linear-gradient(
-        to right,
-        color-mix(in srgb, var(--color-accent-2) 40%, transparent) 0%,
-        color-mix(in srgb, var(--color-accent-2) 40%, transparent) 50%,
-        transparent 50%,
-        transparent 100%
-      ),
-      linear-gradient(
-        to right,
-        color-mix(in srgb, var(--color-accent-3) 40%, transparent) 0%,
-        color-mix(in srgb, var(--color-accent-3) 40%, transparent) 50%,
-        transparent 50%,
-        transparent 100%
-      );
+    &[href] {
+      /*
+       * Left-to-right triple-layered highlight transition.
+       *
+       * We set up a 200%-width two-window background, half colored and half
+       * empty, pushed against the right edge so the empty window is shown by
+       * default.
+       *
+       * Upon hover, we move this background to be pushed against the left edge,
+       * showing the colored window and creating the illusion of colors sliding in
+       * from left to right.
+       */
+      background-image: linear-gradient(
+          to right,
+          color-mix(in srgb, var(--color-accent-1) 40%, transparent) 0%,
+          color-mix(in srgb, var(--color-accent-1) 40%, transparent) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          color-mix(in srgb, var(--color-accent-2) 40%, transparent) 0%,
+          color-mix(in srgb, var(--color-accent-2) 40%, transparent) 50%,
+          transparent 50%,
+          transparent 100%
+        ),
+        linear-gradient(
+          to right,
+          color-mix(in srgb, var(--color-accent-3) 40%, transparent) 0%,
+          color-mix(in srgb, var(--color-accent-3) 40%, transparent) 50%,
+          transparent 50%,
+          transparent 100%
+        );
 
-    /*
-     * Extra 2% width to make sure background doesn't bleed out of the element.
-     */
-    background-size: 202% calc(100% / 3);
-    background-position:
-      right 0%,
-      right 50%,
-      right 100%;
-    background-repeat: no-repeat;
-    transition:
-      background-position var(--underline-transition-speed),
-      text-decoration var(--underline-transition-speed);
+      /*
+       * Extra 2% width to make sure background doesn't bleed out of the
+       * element.
+       */
+      background-size: 202% calc(100% / 3);
+      background-position:
+        right 0%,
+        right 50%,
+        right 100%;
+      background-repeat: no-repeat;
+      transition:
+        background-position var(--underline-transition-speed),
+        text-decoration var(--underline-transition-speed);
+    }
 
-    &:hover {
+    &[href]:hover {
       &:not(.noUnderline) {
         text-decoration-color: transparent;
       }

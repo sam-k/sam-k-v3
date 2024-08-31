@@ -4,7 +4,7 @@
 
   // TODO: Fetch from data.
   const projects: Array<{
-    name: string;
+    title: string;
     description: string;
     icons?: Array<{
       kind: LinkType;
@@ -17,23 +17,20 @@
     }>;
   }> = [
     {
-      name: 'Project 1',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      icons: [
-        {
-          kind: 'github',
-          label: 'label 1',
-          link: 'link 1',
-        },
-      ],
-      tags: [
-        {
-          label: 'tag 1',
-          link: 'link 1',
-        },
-      ],
+      icons: [{
+        kind: 'github',
+        label: 'label 1',
+        link: 'link 1',
+      }],
+      tags: [{
+        label: 'tag 1',
+        link: 'link 1',
+      }],
     }, {
-      name: 'Project 2',
+      title:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       icons: [{
@@ -43,14 +40,12 @@
       }, {
         kind: 'github',
         label: 'label 2',
-        link: 'link 2',
       }],
       tags: [{
         label: 'tag 1',
         link: 'link 1',
       }, {
         label: 'tag 2',
-        link: 'link 2',
       }],
     },
   ];
@@ -62,8 +57,8 @@
     <ul :class="$style.projects">
       <ProjectItem
         v-for="project in projects"
-        :key="project.name"
-        :name="project.name"
+        :key="project.title"
+        :title="project.title"
         :description="project.description"
         :icons="project.icons"
         :tags="project.tags"
