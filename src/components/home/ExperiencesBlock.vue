@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import type {TagDefinition} from '../common/utils.ts';
-  import ExperienceItem from '../experience/ExperienceItem.vue';
+  import ExperienceItem from '../experiences/ExperienceItem.vue';
 
   // TODO: Fetch from data.
   const experiences: Array<{
