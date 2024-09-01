@@ -1,7 +1,6 @@
 <script setup lang="ts">
-  import {MOCK_PROJECTS} from '../components/common/mockData.ts';
   import SectionLabel from '../components/common/background/SectionLabel.vue';
-  import ProjectItem from '../components/projects/ProjectItem.vue';
+  import ProjectsContainer from '../components/projects/ProjectsContainer.vue';
 </script>
 
 <template>
@@ -12,16 +11,7 @@
     <p>
       Open-source projects I’ve built over the years, including this website.
     </p>
-    <ul :class="$style.projects">
-      <ProjectItem
-        v-for="project in MOCK_PROJECTS"
-        :key="project.title"
-        :title="project.title"
-        :description="project.description"
-        :icons="project.icons"
-        :tags="project.tags"
-      />
-    </ul>
+    <ProjectsContainer />
   </div>
 </template>
 
