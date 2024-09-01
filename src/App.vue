@@ -17,9 +17,10 @@
         <RouterLink to="/notes" class="noHover">
           <NavHeaderItem name="Notes" color="var(--color-accent-2)" />
         </RouterLink>
-        <RouterLink to="/resume" class="noHover">
+        <!-- TODO: Fetch from data. -->
+        <a href="link 1" class="noHover">
           <NavHeaderItem name="Resume" color="var(--color-accent-3)" />
-        </RouterLink>
+        </a>
         <!-- TODO: Implement dark mode toggle. -->
         <a :class="[$style.darkModeButton, 'noHover']">
           <NavHeaderItem name="Mode" color="var(--color-text)">
