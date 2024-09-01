@@ -25,7 +25,6 @@
         <a href="link 1" aria-label="Resumé" class="noHover">
           <NavHeaderItem name="Resume" color="var(--color-accent-3)" />
         </a>
-        <!-- TODO: Implement dark mode toggle. -->
         <a
           :aria-label="store.isDarkMode ? 'Dark Mode' : 'Light Mode'"
           :class="[$style.darkModeButton, 'noHover']"
