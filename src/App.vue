@@ -8,7 +8,7 @@
   store.applyDarkMode(/* isInitialRender= */ true);
 </script>
 
-<template class="">
+<template>
   <header>
     <div :class="[$style.container, $style.navContainer]">
       <RouterLink to="/" :class="[$style.home, 'noHover']">
@@ -25,17 +25,21 @@
         <a href="link 1" aria-label="Resumé" class="noHover">
           <NavHeaderItem name="Resume" color="var(--color-accent-3)" />
         </a>
-        <a
-          :aria-label="store.isDarkMode ? 'Dark Mode' : 'Light Mode'"
+        <button
+          aria-label="Dark Mode Toggle"
           :class="[$style.darkModeButton, 'noHover']"
           tabindex="0"
           @click="store.toggleDarkMode"
         >
-          <NavHeaderItem name="Mode" color="var(--color-text)">
+          <NavHeaderItem
+            name="Mode"
+            color="var(--color-text)"
+            aria-hidden="true"
+          >
             <WeatherNightIcon v-if="store.isDarkMode" />
             <WeatherSunnyIcon v-if="!store.isDarkMode" />
           </NavHeaderItem>
-        </a>
+        </button>
       </nav>
     </div>
   </header>
@@ -46,7 +50,12 @@
       <span>•</span>
       <span>© 2024 Sam Kim</span>
       <span>•</span>
-      <a href="https://github.com/sam-k/sam-k-v3">Under the hood ↗</a>
+      <a
+        href="https://github.com/sam-k/sam-k-v3"
+        aria-label="Under the hood"
+      >
+        Under the hood ↗
+      </a>
     </div>
   </footer>
 </template>
@@ -93,11 +102,16 @@
     align-items: center;
     column-gap: 1rem;
 
-    a {
+    a,
+    .darkModeButton {
       font-weight: 500;
     }
 
     .darkModeButton {
+      padding: 0;
+      font-size: 1rem;
+      background-color: unset;
+      border: none;
       cursor: pointer;
     }
   }

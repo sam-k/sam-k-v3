@@ -46,7 +46,7 @@
       <li>
         <!-- TODO: Fetch from data. -->
         <LegendItem
-          label="ko-fi.com/kofi"
+          label="ko-fi.com/ko-fi"
           link="https://ko-fi.com/ko-fi"
           color="var(--color-highlight-4)"
         >
