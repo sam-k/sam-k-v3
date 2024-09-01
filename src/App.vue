@@ -43,7 +43,7 @@
 
 <style module>
   header {
-    z-index: 9999;
+    z-index: var(--nav-z-index);
     position: fixed;
     top: 0;
     left: 0;
@@ -93,13 +93,17 @@
   }
 
   .viewContainer {
-    margin: calc(var(--nav-height) + 5rem) auto 5rem auto;
+    margin: 0 auto;
+    padding: calc(var(--nav-height) + 5rem) 0 var(--nav-height) 0;
   }
 
   footer {
+    z-index: var(--nav-z-index);
+    position: relative;
     width: 100%;
     height: var(--nav-height);
     border-top: 1px solid var(--color-border);
+    background-color: var(--color-background);
   }
 
   .footerContainer {

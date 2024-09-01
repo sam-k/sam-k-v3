@@ -41,7 +41,7 @@
     height: 1.6rem;
     padding: 0 6px;
     border: 1px solid var(--color-border);
-    border-radius: 9999px; /* Hack for rounded rectangle. */
+    border-radius: var(--rounded-rectangle-border-radius);
     background-color: var(--color-background-soft);
     text-decoration: none;
     text-wrap: nowrap;

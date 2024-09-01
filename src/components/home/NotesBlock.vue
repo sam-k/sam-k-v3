@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import NoteItem from '../notes/NoteItem.vue';
+  import SectionLabel from './SectionLabel.vue';
 
   // TODO: Fetch from data.
   const notes: Array<{
@@ -34,7 +35,7 @@
 
 <template>
   <div :class="$style.container">
-    <h2>Notes</h2>
+    <SectionLabel label="Notes" :index="1" />
     <ul :class="$style.notes">
       <NoteItem
         v-for="note in notes"
