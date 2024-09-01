@@ -1,44 +1,17 @@
 <script setup lang="ts">
+  import SectionLabel from '../common/background/SectionLabel.vue';
+  import {MOCK_NOTES} from '../common/mockData.ts';
   import NoteItem from '../notes/NoteItem.vue';
-  import SectionLabel from './SectionLabel.vue';
-
-  // TODO: Fetch from data.
-  const notes: Array<{
-    title: string;
-    date: Date;
-    link?: string;
-    tags?: Array<{
-      label: string;
-      link?: string;
-    }>;
-  }> = [{
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    date: new Date('2024-01-01'),
-    link: 'link 1',
-    tags: [{
-      label: 'tag 1',
-      link: 'link 1',
-    }],
-  }, {
-    title:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-    date: new Date('2023-01-01'),
-    link: 'link 2',
-    tags: [{
-      label: 'tag 1',
-      link: 'link 1',
-    }, {
-      label: 'tag 2',
-    }],
-  }];
 </script>
 
 <template>
   <div :class="$style.container">
-    <SectionLabel label="Notes" :index="1" />
+    <SectionLabel label="Notes" :index="1" font-size="2rem">
+      <h2>Notes</h2>
+    </SectionLabel>
     <ul :class="$style.notes">
       <NoteItem
-        v-for="note in notes"
+        v-for="note in MOCK_NOTES"
         :key="note.title"
         :title="note.title"
         :date="note.date"

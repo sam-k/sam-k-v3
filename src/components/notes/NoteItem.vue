@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TagsContainer from '../common/TagsContainer.vue';
-import type {TagDefinition} from '../common/utils.ts';
+  import TagsContainer from '../common/TagsContainer.vue';
+  import type {TagDefinition} from '../common/utils.ts';
 
   defineProps<{
     title: string;

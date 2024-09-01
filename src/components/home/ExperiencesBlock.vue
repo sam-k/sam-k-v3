@@ -1,53 +1,17 @@
 <script setup lang="ts">
-  import type {TagDefinition} from '../common/utils.ts';
+  import SectionLabel from '../common/background/SectionLabel.vue';
+  import {MOCK_EXPERIENCES} from '../common/mockData.ts';
   import ExperienceItem from '../experiences/ExperienceItem.vue';
-  import SectionLabel from './SectionLabel.vue';
-
-  // TODO: Fetch from data.
-  const experiences: Array<{
-    role: string;
-    org: {
-      name: string;
-      link?: string;
-    };
-    description: string;
-    dateRange: string;
-    tags?: TagDefinition[];
-  }> = [{
-    role: 'Role 1',
-    org: {
-      name: 'Organization 1',
-      link: 'link 1',
-    },
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    dateRange: '2024 – Present',
-    tags: [{
-      label: 'tag 1',
-      link: 'link 1',
-    }],
-  }, {
-    role: 'Role 2',
-    org: {
-      name: 'Organization 2',
-    },
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    dateRange: '2023 – 2024',
-    tags: [{
-      label: 'tag 1',
-      link: 'link 1',
-    }, {
-      label: 'tag 2',
-    }],
-  }];
 </script>
 
 <template>
   <div :class="$style.container">
-    <SectionLabel label="Experience" :index="2" />
+    <SectionLabel label="Experience" :index="2" font-size="2rem">
+      <h2>Experiences</h2>
+    </SectionLabel>
     <ul :class="$style.experiences">
       <ExperienceItem
-        v-for="experience in experiences"
+        v-for="experience in MOCK_EXPERIENCES"
         :key="experience.org.name"
         :role="experience.role"
         :org="experience.org"
