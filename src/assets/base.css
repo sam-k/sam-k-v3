@@ -38,18 +38,6 @@
   --underline-transition-speed: 250ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--base-color-black);
-    --color-background-soft: var(--base-color-black-soft);
-    --color-background-mute: var(--base-color-black-mute);
-    --color-border: var(--base-color-divider-dark-2);
-    --color-border-hover: var(--base-color-divider-dark-1);
-    --color-heading: var(--base-color-text-dark-1);
-    --color-text: var(--base-color-text-dark-2);
-  }
-}
-
 :root.dark {
   --color-background: var(--base-color-black);
   --color-background-soft: var(--base-color-black-soft);

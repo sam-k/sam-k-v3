@@ -5,7 +5,7 @@
   import NavHeaderItem from './components/nav/NavHeaderItem.vue';
   import store from './store.ts';
 
-  store.applyDarkMode();
+  store.applyDarkMode(/* isInitialRender= */ true);
 </script>
 
 <template class="">
