@@ -23,7 +23,7 @@
     : `calc(${props.fontSize} / 2)`;
 
   const lineColor = `var(--color-accent-${props.index + 1})`;
-  const lineOpacity = props.hidden ? '50%' : '100%';
+  const lineOpacity = props.hidden ? '25%' : '100%';
 </script>
 
 <template>
