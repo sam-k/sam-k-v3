@@ -58,6 +58,10 @@ ul {
   list-style-type: none;
 }
 
+button {
+  font-family: inherit;
+}
+
 a {
   color: var(--color-text);
   text-decoration: none;

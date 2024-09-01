@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <a :href="link" :class="[$style.container, 'noHover']">
+  <a :href="link" :class="[$style.container, 'noHover']" tabindex="-1">
     <div :class="$style.bullet">
       <div :class="$style.line" />
       <div :class="$style.stop">

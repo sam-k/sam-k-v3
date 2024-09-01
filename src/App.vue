@@ -1,7 +1,11 @@
 <script setup lang="ts">
   import {RouterLink, RouterView} from 'vue-router';
-  import BusIcon from './components/icons/BusIcon.vue';
+  import WeatherNightIcon from './components/icons/WeatherNightIcon.vue';
+  import WeatherSunnyIcon from './components/icons/WeatherSunnyIcon.vue';
   import NavHeaderItem from './components/nav/NavHeaderItem.vue';
+  import store from './store.ts';
+
+  store.applyDarkMode(/* isInitialRender= */ true);
 </script>
 
 <template>
@@ -11,22 +15,31 @@
         Sam Kim
       </RouterLink>
       <nav>
-        <RouterLink to="/projects" class="noHover">
+        <RouterLink to="/projects" aria-label="Projects" class="noHover">
           <NavHeaderItem name="Projects" color="var(--color-accent-1)" />
         </RouterLink>
-        <RouterLink to="/notes" class="noHover">
+        <RouterLink to="/notes" aria-label="Notes" class="noHover">
           <NavHeaderItem name="Notes" color="var(--color-accent-2)" />
         </RouterLink>
         <!-- TODO: Fetch from data. -->
-        <a href="link 1" class="noHover">
+        <a href="link 1" aria-label="Resumé" class="noHover">
           <NavHeaderItem name="Resume" color="var(--color-accent-3)" />
         </a>
-        <!-- TODO: Implement dark mode toggle. -->
-        <a :class="[$style.darkModeButton, 'noHover']">
-          <NavHeaderItem name="Mode" color="var(--color-text)">
-            <BusIcon />
+        <button
+          aria-label="Dark Mode Toggle"
+          :class="[$style.darkModeButton, 'noHover']"
+          tabindex="0"
+          @click="store.toggleDarkMode"
+        >
+          <NavHeaderItem
+            name="Mode"
+            color="var(--color-text)"
+            aria-hidden="true"
+          >
+            <WeatherNightIcon v-if="store.isDarkMode" />
+            <WeatherSunnyIcon v-if="!store.isDarkMode" />
           </NavHeaderItem>
-        </a>
+        </button>
       </nav>
     </div>
   </header>
@@ -37,7 +50,12 @@
       <span>•</span>
       <span>© 2024 Sam Kim</span>
       <span>•</span>
-      <a href="https://github.com/sam-k/sam-k-v3">Under the hood ↗</a>
+      <a
+        href="https://github.com/sam-k/sam-k-v3"
+        aria-label="Under the hood"
+      >
+        Under the hood ↗
+      </a>
     </div>
   </footer>
 </template>
@@ -84,11 +102,16 @@
     align-items: center;
     column-gap: 1rem;
 
-    a {
+    a,
+    .darkModeButton {
       font-weight: 500;
     }
 
     .darkModeButton {
+      padding: 0;
+      font-size: 1rem;
+      background-color: unset;
+      border: none;
       cursor: pointer;
     }
   }
