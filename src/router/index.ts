@@ -23,5 +23,10 @@ export default createRouter({
       name: 'resume',
       component: () => import('../views/ResumeView.vue'),
     },
+    {
+      path: '/:pathMatch(.*)',
+      name: '404',
+      component: () => import('../views/PageNotFoundView.vue'),
+    },
   ],
 });

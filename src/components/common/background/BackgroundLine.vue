@@ -1,13 +1,14 @@
 <script setup lang="ts">
   const props = defineProps<{
     index: number;
-    fontSize: string;
+    fontSize?: string;
     baseIndex?: number;
     hidden?: boolean;
   }>();
 
   const leftIndex = props.index;
   const rightIndex = 2 - props.index;
+  const fontSizeOrDefault = props.fontSize ?? '1em';
 
   const leftDisplay =
     props.index >= (props.baseIndex ?? props.index)
@@ -18,9 +19,7 @@
       ? 'inherit'
       : 'none';
 
-  const yOffset = props.hidden
-    ? '-99999px'
-    : `calc(${props.fontSize} / 2)`;
+  const yOffset = props.hidden ? '-99999px': `calc(${fontSizeOrDefault} / 2)`;
 
   const lineColor = `var(--color-accent-${props.index + 1})`;
   const lineOpacity = props.hidden ? '25%' : '100%';
