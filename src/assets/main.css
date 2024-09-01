@@ -20,6 +20,7 @@ body {
   font-size: 16px;
   text-rendering: optimizelegibility;
 
+  --header-footer-border-width: 1px;
   --nav-z-index: 999999;
   --nav-height: 5.6875rem;
 }
@@ -59,7 +60,13 @@ ul {
 }
 
 button {
+  padding: unset;
+  font-size: unset;
+  color: unset;
+  background-color: unset;
+  border: none;
   font-family: inherit;
+  cursor: pointer;
 }
 
 a {

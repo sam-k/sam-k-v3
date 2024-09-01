@@ -1,11 +1,12 @@
 <script setup lang="ts">
   const props = defineProps<{
     index: number;
-    fontSize: string;
+    fontSize?: string;
   }>();
 
   const leftIndex = props.index;
   const rightIndex = 2 - props.index;
+  const fontSizeOrDefault = props.fontSize ?? '1em';
 </script>
 
 <template>
@@ -31,7 +32,7 @@
       position: absolute;
       content: '';
       z-index: calc(var(--nav-z-index) - 1);
-      bottom: calc((v-bind(fontSize) - var(--line-width)) / 2);
+      bottom: calc((v-bind(fontSizeOrDefault) - var(--line-width)) / 2);
       height: var(--line-width);
       background-color: var(--color-background);
       border: var(--stop-border-width) solid var(--color-text);

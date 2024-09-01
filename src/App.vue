@@ -4,8 +4,6 @@
   import WeatherSunnyIcon from './components/icons/WeatherSunnyIcon.vue';
   import NavHeaderItem from './components/nav/NavHeaderItem.vue';
   import store from './store.ts';
-
-  store.applyDarkMode(/* isInitialRender= */ true);
 </script>
 
 <template>
@@ -28,6 +26,7 @@
         <button
           aria-label="Dark Mode Toggle"
           :class="[$style.darkModeButton, 'noHover']"
+          type="button"
           tabindex="0"
           @click="store.toggleDarkMode"
         >
@@ -68,7 +67,7 @@
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--header-footer-border-width) solid var(--color-border);
     background-color: var(--color-background);
     line-height: 1;
   }
@@ -106,27 +105,29 @@
     .darkModeButton {
       font-weight: 500;
     }
-
-    .darkModeButton {
-      padding: 0;
-      font-size: 1rem;
-      background-color: unset;
-      border: none;
-      cursor: pointer;
-    }
   }
 
   .viewContainer {
+    --view-container-top-padding: calc(var(--nav-height) + 5rem);
+    --view-container-bottom-padding: var(--nav-height);
+
+    min-height: calc(
+      100vh - var(--nav-height) - var(--view-container-top-padding) -
+        var(--view-container-bottom-padding) - 2 *
+        var(--header-footer-border-width)
+    );
     margin: 0 auto;
-    padding: calc(var(--nav-height) + 5rem) 0 var(--nav-height) 0;
+    padding: var(--view-container-top-padding) 0
+      var(--view-container-bottom-padding) 0;
   }
 
   footer {
     z-index: var(--nav-z-index);
     position: relative;
+    bottom: 0;
     width: 100%;
     height: var(--nav-height);
-    border-top: 1px solid var(--color-border);
+    border-top: var(--header-footer-border-width) solid var(--color-border);
     background-color: var(--color-background);
   }
 
