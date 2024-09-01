@@ -1,14 +1,17 @@
 <script setup lang="ts">
   import EmailIcon from '../icons/EmailIcon.vue';
   import GitHubIcon from '../icons/GitHubIcon.vue';
-  import KoFiIcon from '../icons/HeartBoxIcon.vue';
+  import HeartBoxIcon from '../icons/HeartBoxIcon.vue';
   import LinkedInIcon from '../icons/LinkedInIcon.vue';
   import LegendItem from '../common/LegendItem.vue';
+  import store from '../../store.ts';
 </script>
 
 <template>
   <div :class="$style.container">
-    <span :class="$style.header">Daytime Service</span>
+    <span :class="$style.header">
+      {{ store.isDarkMode ? 'Evening Service': 'Daytime Service' }}
+    </span>
     <ul :class="$style.contacts">
       <li>
         <!-- TODO: Fetch from data. -->
@@ -44,10 +47,10 @@
         <!-- TODO: Fetch from data. -->
         <LegendItem
           label="ko-fi.com/kofi"
-          link="https://ko-fi.com/kofi"
+          link="https://ko-fi.com/ko-fi"
           color="var(--color-highlight-4)"
         >
-          <KoFiIcon />
+          <HeartBoxIcon />
         </LegendItem>
       </li>
     </ul>
