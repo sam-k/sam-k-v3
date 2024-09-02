@@ -19,8 +19,11 @@
         <RouterLink to="/notes" aria-label="Notes" class="noHover">
           <NavHeaderItem name="Notes" color="var(--color-accent-2)" />
         </RouterLink>
-        <!-- TODO: Fetch from data. -->
-        <a href="link 1" aria-label="Resumé" class="noHover">
+        <a
+          aria-label="Resumé"
+          class="noHover"
+          :href="store.personalData.resume?.link"
+        >
           <NavHeaderItem name="Resume" color="var(--color-accent-3)" />
         </a>
         <button

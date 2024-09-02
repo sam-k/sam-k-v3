@@ -8,8 +8,10 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "pnpm run build-only && wrangler pages dev",
+    "build-watch": "vite build --watch",
     "build-only": "vite build",
+    "preview": "run-p build-watch preview-wrangler",
+    "preview-wrangler": "wrangler pages dev --live-reload",
     "type-check": "vue-tsc --build --force",
     "lint": "node --import @swc-node/register/esm-register ./scripts/lint.ts",
     "format": "node --import @swc-node/register/esm-register ./scripts/lint.ts --fix"
