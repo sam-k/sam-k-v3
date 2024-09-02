@@ -1,5 +1,6 @@
 **/*.html
 **/*.json
 **/*.md
+**/*.toml
 **/*.vue
 **/*.yaml

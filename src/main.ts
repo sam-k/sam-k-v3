@@ -11,4 +11,9 @@ const app = createApp(App);
 
 app.use(router);
 
-router.isReady().then(() => app.mount('#app'));
+Promise.all([
+  router.isReady(),
+  (async () => {
+    store.setPersonalData(await (await fetch('/api/personal')).json());
+  })(),
+]).then(() => app.mount('#app'));

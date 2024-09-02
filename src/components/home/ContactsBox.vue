@@ -14,40 +14,36 @@
     </span>
     <ul :class="$style.contacts">
       <li>
-        <!-- TODO: Fetch from data. -->
         <LegendItem
-          label="email@email.com"
-          link="mailto:email@email.com"
+          :label="store.personalData.email?.display"
+          :link="store.personalData.email?.link"
           color="var(--color-highlight-1)"
         >
           <EmailIcon />
         </LegendItem>
       </li>
       <li>
-        <!-- TODO: Fetch from data. -->
         <LegendItem
-          label="linkedin.com/in/linkedin"
-          link="https://www.linkedin.com/in/linkedin"
+          :label="store.personalData.linkedin?.display"
+          :link="store.personalData.linkedin?.link"
           color="var(--color-highlight-2)"
         >
           <LinkedInIcon />
         </LegendItem>
       </li>
       <li>
-        <!-- TODO: Fetch from data. -->
         <LegendItem
-          label="github.com/github"
-          link="https://github.com/github"
+          :label="store.personalData.github?.display"
+          :link="store.personalData.github?.link"
           color="var(--color-highlight-3)"
         >
           <GitHubIcon />
         </LegendItem>
       </li>
       <li>
-        <!-- TODO: Fetch from data. -->
         <LegendItem
-          label="ko-fi.com/ko-fi"
-          link="https://ko-fi.com/ko-fi"
+          :label="store.personalData['ko-fi']?.display"
+          :link="store.personalData['ko-fi']?.link"
           color="var(--color-highlight-4)"
         >
           <HeartBoxIcon />

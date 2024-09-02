@@ -12,7 +12,6 @@ export default reactive({
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     );
   })(),
-
   applyDarkMode(isInitialRender = false) {
     const rootEl = document.querySelector(':root');
     if (!rootEl) {
@@ -31,9 +30,15 @@ export default reactive({
       rootEl.classList.remove(DARK_MODE_CLASSNAME);
     }
   },
-
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
     this.applyDarkMode();
+  },
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  personalData: {} as Record<string, any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setPersonalData(data: any) {
+    this.personalData = data;
   },
 });

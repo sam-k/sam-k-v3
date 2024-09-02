@@ -1,0 +1,12 @@
+{
+  "extends": ["gts/tsconfig-google.json"],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "types": ["@cloudflare/workers-types"]
+  }
+}
