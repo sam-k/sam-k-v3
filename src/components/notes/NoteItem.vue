@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import TagsContainer from '../common/TagsContainer.vue';
-  import type {TagDefinition} from '../common/utils.ts';
+  import type {LinkInfo} from '../common/utils.ts';
 
   defineProps<{
     title: string;
     date: Date;
     link?: string;
-    tags?: TagDefinition[];
+    tags?: LinkInfo[];
   }>();
 </script>
 

@@ -1,16 +1,13 @@
 <script setup lang="ts">
   import TagsContainer from '../common/TagsContainer.vue';
-  import type {TagDefinition} from '../common/utils.ts';
+  import type {LinkInfo} from '../common/utils.ts';
 
   defineProps<{
     role: string;
-    org: {
-      name:string;
-      link?: string;
-    };
+    org: LinkInfo;
     description: string;
     dateRange: string;
-    tags?: TagDefinition[];
+    tags?: LinkInfo[];
   }>();
 </script>
 
@@ -20,7 +17,7 @@
       <h3 :class="$style.titleContainer">
         <span>{{ role }}</span>
         <span>•</span>
-        <a :href="org.link">{{ org.name }}</a>
+        <a :href="org.link">{{ org.display }}</a>
       </h3>
       <span>{{ dateRange }}</span>
     </div>

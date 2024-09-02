@@ -1,13 +1,14 @@
-<script setup lang="ts">
-  import {MOCK_EXPERIENCES} from '../common/mockData.ts';
+<script async setup lang="ts">
   import ExperienceItem from './ExperienceItem.vue';
+
+  const data = await (await fetch('/api/experiences')).json();
 </script>
 
 <template>
   <ul :class="$style.container">
     <ExperienceItem
-      v-for="experience in MOCK_EXPERIENCES"
-      :key="experience.org.name"
+      v-for="experience in (data.experiences ?? [])"
+      :key="experience.org?.display"
       :role="experience.role"
       :org="experience.org"
       :description="experience.description"
