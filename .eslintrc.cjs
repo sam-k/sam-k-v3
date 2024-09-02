@@ -58,6 +58,11 @@ const config = {
       parser: 'eslint-plugin-markdownlint/parser',
     },
     {
+      files: ['**/*.toml'],
+      extends: ['plugin:toml/standard'],
+      parser: 'toml-eslint-parser',
+    },
+    {
       files: ['**/*.vue'],
       extends: ['plugin:vue/vue3-recommended'],
       rules: {

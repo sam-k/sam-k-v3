@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
+    "preview": "pnpm run build-only && wrangler pages dev",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "node --import @swc-node/register/esm-register ./scripts/lint.ts",
@@ -32,6 +32,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-markdownlint": "^0.6.0",
+    "eslint-plugin-toml": "^0.11.1",
     "eslint-plugin-vue": "^9.27.0",
     "eslint-plugin-yml": "^1.14.0",
     "gts": "^5.3.1",
@@ -44,7 +45,8 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.2",
     "vite-plugin-vue-devtools": "^7.3.8",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.0.29",
+    "wrangler": "^3.73.0"
   },
   "engines": {
     "node": ">=17.0.0"

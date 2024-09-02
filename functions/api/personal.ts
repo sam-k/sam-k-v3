@@ -1,3 +1,3 @@
-import data from '../../content/src/data/personal.json' with {type: 'json'};
+import data from '../../content/src/data/personal.json';
 
 export const onRequestGet: PagesFunction = () => Response.json(data);
