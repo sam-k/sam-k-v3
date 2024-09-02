@@ -19,6 +19,7 @@
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240821.1",
     "@html-eslint/eslint-plugin": "^0.26.0",
     "@html-eslint/parser": "^0.26.0",
     "@swc-node/register": "^1.10.9",
