@@ -13,6 +13,7 @@
     "preview": "run-p build-watch preview-wrangler",
     "preview-wrangler": "wrangler pages dev --live-reload",
     "type-check": "vue-tsc --build --force",
+    "update-content": "git submodule update --remote",
     "lint": "node --import @swc-node/register/esm-register ./scripts/lint.ts",
     "format": "node --import @swc-node/register/esm-register ./scripts/lint.ts --fix"
   },
