@@ -1,4 +1,4 @@
 export interface LinkInfo {
-  display?: string;
+  display: string;
   link?: string;
 }

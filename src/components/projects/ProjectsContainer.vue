@@ -1,19 +1,17 @@
 <script setup lang="ts">
+  import {MOCK_PROJECTS} from '../common/mockData.ts';
   import ProjectItem from '../projects/ProjectItem.vue';
-
-  const props = defineProps<{featured?: boolean}>();
-
-  const data = await (
-    await fetch(`/api/projects${props.featured ? '/featured' : ''}`)
-  ).json();
 </script>
 
 <template>
   <ul :class="$style.container">
     <ProjectItem
-      v-for="project in (data.projects ?? [])"
+      v-for="project in MOCK_PROJECTS"
       :key="project.title"
-      :project="project"
+      :title="project.title"
+      :description="project.description"
+      :icons="project.icons"
+      :tags="project.tags"
     />
   </ul>
 </template>

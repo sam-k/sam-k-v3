@@ -11,9 +11,7 @@
     <p>
       Open-source projects I’ve built over the years, including this website.
     </p>
-    <Suspense>
-      <ProjectsContainer />
-    </Suspense>
+    <ProjectsContainer />
   </div>
 </template>
 

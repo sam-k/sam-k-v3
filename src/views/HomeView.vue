@@ -26,9 +26,7 @@
       <SectionLabel label="Projects" :index="0" font-size="2rem">
         <h2>Projects</h2>
       </SectionLabel>
-      <Suspense>
-        <ProjectsContainer :featured="true" />
-      </Suspense>
+      <ProjectsContainer />
     </div>
     <div :class="$style.blockContainer">
       <SectionLabel label="Notes" :index="1" font-size="2rem">
