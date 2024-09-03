@@ -4,20 +4,24 @@
   import type {LinkInfo} from '../common/utils.ts';
 
   const props = defineProps<{
-    role: string;
-    org: LinkInfo;
-    description: string;
-    date: {
-      start: string;
-      end?: string;
+    experience: {
+      role?: string;
+      org?: LinkInfo;
+      description?: string;
+      date?: {
+        start?: string;
+        end?: string;
+      };
+      tags?: LinkInfo[];
     };
-    tags?: LinkInfo[];
   }>();
 
-  const startYear =
-    props.date.start ? new Date(props.date.start).getUTCFullYear() : '';
-  const endYear =
-    props.date.end ? new Date(props.date.end).getUTCFullYear() : 'Present';
+  const startYear = props.experience.date?.start
+    ? new Date(props.experience.date?.start).getUTCFullYear()
+    : '';
+  const endYear = props.experience.date?.end
+    ? new Date(props.experience.date.end).getUTCFullYear()
+    : 'Present';
 
   const markdownConverter = new showdown.Converter();
 </script>
@@ -26,16 +30,16 @@
   <li :class="$style.container">
     <div :class="$style.headerContainer">
       <h3 :class="$style.titleContainer">
-        <span>{{ role }}</span>
+        <span>{{ experience.role }}</span>
         <span>•</span>
-        <a :href="org.link">{{ org.display }}</a>
+        <a :href="experience.org?.link">{{ experience.org?.display }}</a>
       </h3>
       <span v-if="startYear === endYear">{{ startYear }}</span>
       <span v-if="startYear !== endYear">{{ startYear }} – {{ endYear }}</span>
     </div>
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="markdownConverter.makeHtml(description)" />
-    <TagsContainer :tags="tags" />
+    <div v-html="markdownConverter.makeHtml(experience.description ?? '')" />
+    <TagsContainer :tags="experience.tags" />
   </li>
 </template>
 

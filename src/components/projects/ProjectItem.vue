@@ -1,40 +1,42 @@
 <script setup lang="ts">
+  import showdown from 'showdown';
   import TagContainer from '../common/TagsContainer.vue';
   import type {LinkInfo} from '../common/utils.ts';
   import ProjectIconItem from './ProjectIconItem.vue';
   import type {LinkType} from './utils.ts';
 
   defineProps<{
-    title: string;
-    description: string;
-    icons?: Array<{
-      kind: LinkType;
-      label?: string;
-      link?: string;
-    }>;
-    tags?: LinkInfo[];
+    project: {
+      title?: string;
+      description?: string;
+      image?: string;
+      icons?: Array<LinkInfo & {kind?: LinkType}>;
+      tags?: LinkInfo[];
+    };
   }>();
+
+  const markdownConverter = new showdown.Converter();
 </script>
 
 <template>
   <li :class="$style.container">
-    <!-- TODO: Fetch from data. -->
-    <div :class="$style.testImg" />
+    <img :src="project.image" :alt="project.title" height="66.75">
     <div :class="$style.textContainer">
       <div :class="$style.titleContainer">
-        <h3>{{ title }}</h3>
+        <h3>{{ project.title }}</h3>
         <ul>
           <ProjectIconItem
-            v-for="icon in icons"
+            v-for="icon in project.icons"
             :key="icon.kind"
             :kind="icon.kind"
-            :label="icon.label"
+            :display="icon.display"
             :link="icon.link"
           />
         </ul>
       </div>
-      <p>{{ description }}</p>
-      <TagContainer :tags="tags" />
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div v-html="markdownConverter.makeHtml(project.description ?? '')" />
+      <TagContainer :tags="project.tags" />
     </div>
   </li>
 </template>
@@ -44,11 +46,10 @@
     display: flex;
     align-items: center;
     column-gap: 1.5rem;
-  }
 
-  .testImg {
-    padding: 33.75px 60px;
-    background-color: red;
+    img {
+      border: 1px solid var(--color-border);
+    }
   }
 
   .textContainer {
