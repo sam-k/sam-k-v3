@@ -25,7 +25,8 @@ const main = async () => {
     // Build directory does not exist.
   }
 
-  const assetMap = new Map<string, string>();
+  /** @type {Map<string, string>} */
+  const assetMap = new Map();
   for await (const dirent of await opendir(CONTENT_SRC_DIR, {
     recursive: true,
   })) {
