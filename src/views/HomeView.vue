@@ -38,7 +38,9 @@
       <SectionLabel label="Experience" :index="2" font-size="2rem">
         <h2>Experiences</h2>
       </SectionLabel>
-      <ExperiencesContainer />
+      <Suspense>
+        <ExperiencesContainer />
+      </Suspense>
     </div>
   </main>
 </template>

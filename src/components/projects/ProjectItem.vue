@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import TagContainer from '../common/TagsContainer.vue';
-  import type {TagDefinition} from '../common/utils.ts';
+  import type {LinkInfo} from '../common/utils.ts';
   import ProjectIconItem from './ProjectIconItem.vue';
   import type {LinkType} from './utils.ts';
 
@@ -12,7 +12,7 @@
       label?: string;
       link?: string;
     }>;
-    tags?: TagDefinition[];
+    tags?: LinkInfo[];
   }>();
 </script>
 

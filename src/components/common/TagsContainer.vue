@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import type {TagDefinition} from './utils.ts';
+  import type {LinkInfo} from './utils.ts';
 
-  defineProps<{tags?: TagDefinition[]}>();
+  defineProps<{tags?: LinkInfo[]}>();
 </script>
 
 <template>
   <ul :class="$style.tags">
     <template v-for="tag in tags" :key="tag.label">
       <li>
-        <a class="noMargin noUnderline" :href="tag.link">{{ tag.label }}</a>
+        <a class="noMargin noUnderline" :href="tag.link">{{ tag.display }}</a>
       </li>
     </template>
   </ul>

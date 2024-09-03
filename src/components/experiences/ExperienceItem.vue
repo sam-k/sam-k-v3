@@ -1,17 +1,25 @@
 <script setup lang="ts">
+  import showdown from 'showdown';
   import TagsContainer from '../common/TagsContainer.vue';
-  import type {TagDefinition} from '../common/utils.ts';
+  import type {LinkInfo} from '../common/utils.ts';
 
-  defineProps<{
+  const props = defineProps<{
     role: string;
-    org: {
-      name:string;
-      link?: string;
-    };
+    org: LinkInfo;
     description: string;
-    dateRange: string;
-    tags?: TagDefinition[];
+    date: {
+      start: string;
+      end?: string;
+    };
+    tags?: LinkInfo[];
   }>();
+
+  const startYear =
+    props.date.start ? new Date(props.date.start).getUTCFullYear() : '';
+  const endYear =
+    props.date.end ? new Date(props.date.end).getUTCFullYear() : 'Present';
+
+  const markdownConverter = new showdown.Converter();
 </script>
 
 <template>
@@ -20,11 +28,13 @@
       <h3 :class="$style.titleContainer">
         <span>{{ role }}</span>
         <span>•</span>
-        <a :href="org.link">{{ org.name }}</a>
+        <a :href="org.link">{{ org.display }}</a>
       </h3>
-      <span>{{ dateRange }}</span>
+      <span v-if="startYear === endYear">{{ startYear }}</span>
+      <span v-if="startYear !== endYear">{{ startYear }} – {{ endYear }}</span>
     </div>
-    <p>{{ description }}</p>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div v-html="markdownConverter.makeHtml(description)" />
     <TagsContainer :tags="tags" />
   </li>
 </template>

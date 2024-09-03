@@ -1,4 +1,4 @@
-export interface TagDefinition {
-  label: string;
+export interface LinkInfo {
+  display: string;
   link?: string;
 }
