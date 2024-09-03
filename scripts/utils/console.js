@@ -3,8 +3,13 @@ import {spawn} from 'node:child_process';
 
 export const getArgs = () => minimist(process.argv.slice(2));
 
-export const spawnCmd = (cmd: string, args?: Array<string | undefined>) =>
-  new Promise<void>((resolve, reject) => {
+/**
+ * @param {string} cmd
+ * @param {Array<string|undefined>=} args
+ * @returns {Promise<void>}
+ */
+export const spawnCmd = (cmd, args) =>
+  new Promise((resolve, reject) => {
     const proc = spawn(cmd, args?.filter(arg => arg !== undefined) ?? [], {
       env: {
         ...process.env,

@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "sam-k-v3",
   "version": "1.0.0",
   "license": "ISC",
@@ -7,15 +8,16 @@
   "packageManager": "pnpm@9.8.0",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "build-watch": "vite build --watch",
-    "build-only": "vite build",
-    "preview": "run-p build-watch preview-wrangler",
+    "build": "run-p type-check build-only --",
+    "build-only": "run-p build-source build-content",
+    "build-source": "vite build --",
+    "build-content": "node ./scripts/buildContent.js",
+    "preview": "run-p \"build --watch\" preview-wrangler",
     "preview-wrangler": "wrangler pages dev --live-reload",
     "type-check": "vue-tsc --build --force",
     "update-content": "git submodule update --remote",
-    "lint": "node --import @swc-node/register/esm-register ./scripts/lint.ts",
-    "format": "node --import @swc-node/register/esm-register ./scripts/lint.ts --fix"
+    "lint": "node ./scripts/lint.js",
+    "format": "node ./scripts/lint.js --fix"
   },
   "dependencies": {
     "showdown": "^2.1.0",
@@ -29,8 +31,9 @@
     "@swc-node/register": "^1.10.9",
     "@tsconfig/node21": "^21.0.3",
     "@types/eslint": "^8.56.11",
+    "@types/mime-types": "^2.1.4",
     "@types/minimist": "^1.2.5",
-    "@types/node": "20.8.2",
+    "@types/node": "^22.5.2",
     "@types/showdown": "^2.0.6",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
@@ -41,6 +44,7 @@
     "eslint-plugin-vue": "^9.27.0",
     "eslint-plugin-yml": "^1.14.0",
     "gts": "^5.3.1",
+    "mime-types": "^2.1.35",
     "minimist": "^1.2.8",
     "npm-run-all2": "^6.2.2",
     "prettier-eslint": "^16.3.0",
@@ -54,7 +58,7 @@
     "wrangler": "^3.73.0"
   },
   "engines": {
-    "node": ">=17.0.0"
+    "node": ">=18.20.0"
   },
   "engineStrict": true
 }

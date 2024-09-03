@@ -3,5 +3,6 @@
 **/dist/
 **/node_modules/
 **/*.d.ts
+content-build/
 
 !env.d.ts

@@ -7,13 +7,9 @@
 <template>
   <ul :class="$style.container">
     <ExperienceItem
-      v-for="experience in (data.experiences ?? [])"
+      v-for="experience in data.experiences"
       :key="experience.org?.display"
-      :role="experience.role"
-      :org="experience.org"
-      :description="experience.description"
-      :date="experience.date"
-      :tags="experience.tags"
+      :experience="experience"
     />
   </ul>
 </template>

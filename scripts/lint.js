@@ -1,4 +1,4 @@
-import {getArgs, spawnCmd} from './utils/console';
+import {getArgs, spawnCmd} from './utils/console.js';
 
 const ESLINT_EXTS = [
   'cjs',
@@ -12,9 +12,9 @@ const ESLINT_EXTS = [
   'vue',
   'yaml',
   'yml',
-] as const;
+];
 
-const STYLELINT_EXTS = ['css'] as const;
+const STYLELINT_EXTS = ['css'];
 
 const main = async () => {
   const argv = getArgs();
