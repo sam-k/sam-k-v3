@@ -1,15 +1,13 @@
 <script setup lang="ts">
+  import type {Component} from 'vue';
+  import type {LinkInfo} from '../common/utils.ts';
   import GitHubIcon from '../icons/GitHubIcon.vue';
   import PackageVariantClosedIcon from '../icons/PackageVariantClosedIcon.vue';
   import type {LinkType} from './utils.ts';
 
-  const props = defineProps<{
-    kind: LinkType;
-    label?: string;
-    link?: string;
-  }>();
+  const props = defineProps<LinkInfo & {kind?: LinkType}>();
 
-  let iconComponent;
+  let iconComponent: Component | null = null;
   switch (props.kind) {
     case 'deploy':
       iconComponent = PackageVariantClosedIcon;
@@ -27,7 +25,7 @@
       :href="link"
     >
       <component :is="iconComponent" />
-      <span>{{ label }}</span>
+      <span>{{ display }}</span>
     </a>
   </li>
 </template>

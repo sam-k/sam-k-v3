@@ -1,0 +1,11 @@
+{
+  "extends": ["gts/tsconfig-google.json"],
+  "include": ["./**/*.ts"],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext"
+  }
+}

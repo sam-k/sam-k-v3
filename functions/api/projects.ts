@@ -1,3 +1,3 @@
-import data from '../../content-build/data/personal.json';
+import data from '../../content-build/data/projects.json';
 
 export const onRequestGet: PagesFunction = () => Response.json(data);
