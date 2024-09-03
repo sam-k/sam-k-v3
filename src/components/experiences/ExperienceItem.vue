@@ -1,14 +1,18 @@
 <script setup lang="ts">
+  import showdown from 'showdown';
   import TagsContainer from '../common/TagsContainer.vue';
   import type {LinkInfo} from '../common/utils.ts';
 
-  defineProps<{
+  const props = defineProps<{
     role: string;
     org: LinkInfo;
     description: string;
     dateRange: string;
     tags?: LinkInfo[];
   }>();
+  console.log(props.description);
+
+  const markdownConverter = new showdown.Converter();
 </script>
 
 <template>
@@ -21,7 +25,8 @@
       </h3>
       <span>{{ dateRange }}</span>
     </div>
-    <p>{{ description }}</p>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div v-html="markdownConverter.makeHtml(description)" />
     <TagsContainer :tags="tags" />
   </li>
 </template>
