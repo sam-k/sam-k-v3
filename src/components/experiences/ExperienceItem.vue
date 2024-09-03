@@ -7,10 +7,17 @@
     role: string;
     org: LinkInfo;
     description: string;
-    dateRange: string;
+    date: {
+      start: string;
+      end?: string;
+    };
     tags?: LinkInfo[];
   }>();
-  console.log(props.description);
+
+  const startYear =
+    props.date.start ? new Date(props.date.start).getUTCFullYear() : '';
+  const endYear =
+    props.date.end ? new Date(props.date.end).getUTCFullYear() : 'Present';
 
   const markdownConverter = new showdown.Converter();
 </script>
@@ -23,7 +30,8 @@
         <span>•</span>
         <a :href="org.link">{{ org.display }}</a>
       </h3>
-      <span>{{ dateRange }}</span>
+      <span v-if="startYear === endYear">{{ startYear }}</span>
+      <span v-if="startYear !== endYear">{{ startYear }} – {{ endYear }}</span>
     </div>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="markdownConverter.makeHtml(description)" />

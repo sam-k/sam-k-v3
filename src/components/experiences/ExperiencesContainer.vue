@@ -12,7 +12,7 @@
       :role="experience.role"
       :org="experience.org"
       :description="experience.description"
-      :date-range="experience.dateRange"
+      :date="experience.date"
       :tags="experience.tags"
     />
   </ul>
