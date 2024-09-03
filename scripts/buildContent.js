@@ -33,7 +33,7 @@ const main = async () => {
     if (!dirent.isFile() || extname(dirent.name) === '.json') {
       continue;
     }
-    const filePath = joinPath(dirent.path, dirent.name);
+    const filePath = joinPath(dirent.parentPath, dirent.name);
     assetMap.set(
       filePath.replace(CONTENT_SRC_DIR, ''),
       `data:${contentType(dirent.name)};base64,${await readFile(filePath, {
@@ -48,7 +48,7 @@ const main = async () => {
       continue;
     }
 
-    const filePath = joinPath(dirent.path, dirent.name);
+    const filePath = joinPath(dirent.parentPath, dirent.name);
     const newFilePath = joinPath(
       CONTENT_BUILD_DIR,
       relativePath(CONTENT_SRC_DIR, filePath)
