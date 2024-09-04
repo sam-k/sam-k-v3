@@ -1,6 +1,8 @@
 {
   "extends": ["gts/tsconfig-google.json"],
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["ESNext"],
     "module": "ESNext",

@@ -111,6 +111,9 @@ importers:
       wrangler:
         specifier: ^3.73.0
         version: 3.73.0(@cloudflare/workers-types@4.20240821.1)
+      yaml:
+        specifier: ^2.5.1
+        version: 2.5.1
 
 packages:
 
@@ -2967,8 +2970,8 @@ packages:
     resolution: {integrity: sha512-4wZWvE398hCP7O8n3nXKu/vdq1HcH01ixYlCREaJL5NUMwQ0g3MaGFUBNSlmBtKmhbtVG/Cm6lyYmSVTEVil8A==}
     engines: {node: ^14.17.0 || >=16.0.0}
 
-  yaml@2.5.0:
-    resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
+  yaml@2.5.1:
+    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -5799,9 +5802,9 @@ snapshots:
     dependencies:
       eslint-visitor-keys: 3.4.3
       lodash: 4.17.21
-      yaml: 2.5.0
+      yaml: 2.5.1
 
-  yaml@2.5.0: {}
+  yaml@2.5.1: {}
 
   yargs-parser@20.2.9: {}
 
