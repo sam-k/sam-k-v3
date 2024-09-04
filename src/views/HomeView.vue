@@ -34,7 +34,9 @@
       <SectionLabel label="Notes" :index="1" font-size="2rem">
         <h2>Notes</h2>
       </SectionLabel>
-      <NotesContainer />
+      <Suspense>
+        <NotesContainer :featured="true" />
+      </Suspense>
     </div>
     <div :class="$style.blockContainer">
       <SectionLabel label="Experience" :index="2" font-size="2rem">

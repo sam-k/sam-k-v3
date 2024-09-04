@@ -9,7 +9,9 @@
       <h1>Notes</h1>
     </SectionLabel>
     <p>Articles and random notes I’ve written over the years.</p>
-    <NotesContainer />
+    <Suspense>
+      <NotesContainer />
+    </Suspense>
   </div>
 </template>
 

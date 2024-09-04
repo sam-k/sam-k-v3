@@ -6,6 +6,7 @@ const ESLINT_EXTS = [
   'html',
   'js',
   'json',
+  'md',
   'mjs',
   'mts',
   'ts',

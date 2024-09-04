@@ -1,17 +1,18 @@
 <script setup lang="ts">
-  import {MOCK_NOTES} from '../common/mockData.ts';
+  import {listNotes} from '../../api/index.ts';
   import NoteItem from './NoteItem.vue';
+
+  const props = defineProps<{featured?: boolean}>();
+
+  const data = await listNotes(props.featured);
 </script>
 
 <template>
   <ul :class="$style.container">
     <NoteItem
-      v-for="note in MOCK_NOTES"
+      v-for="note in data.metadata"
       :key="note.title"
-      :title="note.title"
-      :date="note.date"
-      :link="note.link"
-      :tags="note.tags"
+      :note="note"
     />
   </ul>
 </template>

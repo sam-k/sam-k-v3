@@ -1,7 +1,8 @@
 <script async setup lang="ts">
+  import {listExperiences} from '../../api/index.ts';
   import ExperienceItem from './ExperienceItem.vue';
 
-  const data = await (await fetch('/api/experiences')).json();
+  const data = await listExperiences();
 </script>
 
 <template>

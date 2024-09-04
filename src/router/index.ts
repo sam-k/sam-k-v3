@@ -19,6 +19,11 @@ export default createRouter({
       component: () => import('../views/NotesView.vue'),
     },
     {
+      path: '/notes/:name',
+      name: 'note',
+      component: () => import('../views/NoteView.vue'),
+    },
+    {
       path: '/resume',
       name: 'resume',
       component: () => import('../views/ResumeView.vue'),
