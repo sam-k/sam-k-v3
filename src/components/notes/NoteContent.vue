@@ -3,7 +3,7 @@
 
   const props = defineProps<{name: string}>();
 
-  const data = await (await fetch(`/api/posts/${props.name}`)).json();
+  const data = await import(`../../../content-build/posts/${props.name}.json`);
 
   const markdownConverter = new showdown.Converter({
     metadata: true,
@@ -12,8 +12,11 @@
 </script>
 
 <template>
-  <!-- eslint-disable-next-line vue/no-v-html -->
-  <div :class="$style.container" v-html="markdownConverter.makeHtml(data)" />
+  <!-- eslint-disable vue/no-v-html -->
+  <div
+    :class="$style.container"
+    v-html="markdownConverter.makeHtml(data.markdown)"
+  />
 </template>
 
 <style module>

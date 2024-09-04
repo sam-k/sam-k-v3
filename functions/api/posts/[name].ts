@@ -1,10 +1,10 @@
-import data from '../../../content-build/posts/index.json';
-
-export const onRequestGet: PagesFunction = context =>
+export const onRequestGet: PagesFunction = async context =>
   Response.json(
-    (data as Record<string, unknown>)[
-      Array.isArray(context.params.name)
-        ? context.params.name[0]
-        : context.params.name
-    ]
+    await import(
+      `../../../content-build/posts/${
+        Array.isArray(context.params.name)
+          ? context.params.name[0]
+          : context.params.name
+      }.json`
+    )
   );
