@@ -40,12 +40,13 @@ const buildAssetMap = async () => {
 };
 
 /**
+ * Builds Markdown files for fetch, with asset paths replaced with data URLs.
  *
- *
+ * @param {ReadonlyMap<string, string>} assetMap
  * @returns {Promise<void>}
  */
-const buildMarkdownMetadata = async () => {
-  /** @type {Map<string, any[]>} */
+const buildMarkdownMetadata = async assetMap => {
+  /** @type {Map<string, Array<{filename: string} & Record<string, any>>>} */
   const metadataMap = new Map();
 
   for await (const dirent of await opendir(CONTENT_SRC_DIR, {
@@ -56,13 +57,12 @@ const buildMarkdownMetadata = async () => {
     }
 
     const srcFilePath = getFilePath(dirent);
-    const filePath = relativePath(CONTENT_SRC_DIR, srcFilePath);
-    const fileDir = joinPath(filePath, '..');
+    const fileDir = relativePath(CONTENT_SRC_DIR, joinPath(srcFilePath, '..'));
 
     const markdownConverter = new showdown.Converter({metadata: true});
     markdownConverter.makeHtml(await readFile(srcFilePath, 'utf8'));
     const metadata = {
-      path: joinPath(CONTENT_BUILD_DIR, filePath),
+      filename: dirent.name.replace(/.md$/, ''),
       ...parseYaml(markdownConverter.getMetadata(/* raw= */ true)),
     };
     if (metadataMap.has(fileDir)) {
@@ -72,56 +72,75 @@ const buildMarkdownMetadata = async () => {
     }
   }
 
-  for (const [fileBasename, metadataArr] of metadataMap.entries()) {
+  for (const [fileDir, metadataArr] of metadataMap.entries()) {
+    // Write metadata.json file for quick lookups.
     await safeWriteFile(
-      joinPath(CONTENT_BUILD_DIR, fileBasename, 'metadata.ts'),
-      `export default ${JSON.stringify(
+      joinPath(CONTENT_BUILD_DIR, fileDir, 'metadata.json'),
+      JSON.stringify(
         {metadata: metadataArr},
         /* replacer= */ null,
         /* space= */ 2
-      )};`
+      )
+    );
+
+    // Write index.json file for content lookups.
+    const filenames = metadataArr.map(metadata => metadata.filename);
+    /** @type {Record<string, any>} */
+    const contentMap = {};
+    for (const filename of filenames) {
+      const filePath = joinPath(fileDir, `${filename}.md`);
+      let srcFileStr = await readFile(
+        joinPath(CONTENT_SRC_DIR, filePath),
+        'utf8'
+      );
+      srcFileStr = srcFileStr
+        .replaceAll(
+          /\[\^(\d+(?:,\d+)*)]/g,
+          /**
+           * @param {string} _
+           * @param {string} match
+           */
+          (_, match) =>
+            `<sup>${match
+              .split(',')
+              .map(num => `<a href="#ref-${num}">${num}</a>`)
+              .join(', ')}</sup>`
+        )
+        .replaceAll(
+          /\[>(\d+)]:/g,
+          /**
+           * @param {string} _
+           * @param {string} match
+           */
+          (_, match) => `<sup id="ref-${match}">${match}</sup>`
+        );
+      for (const [assetRelativePath, dataUrl] of assetMap.entries()) {
+        const expectedAssetDir = joinPath('assets', filePath).replace(
+          /.md$/,
+          ''
+        );
+        if (joinPath(assetRelativePath, '..') !== expectedAssetDir) {
+          continue;
+        }
+        srcFileStr = srcFileStr.replaceAll(
+          `"${assetRelativePath.replace(
+            expectedAssetDir,
+            POST_ASSETS_PLACEHOLDER
+          )}"`,
+          `"${dataUrl}"`
+        );
+      }
+      contentMap[filename.replace(/.md$/, '')] = srcFileStr;
+    }
+    await safeWriteFile(
+      joinPath(CONTENT_BUILD_DIR, fileDir, 'index.json'),
+      JSON.stringify(contentMap, /* replacer= */ null, /* space= */ 2)
     );
   }
 };
 
 /**
- * Builds
- *
- * @param {ReadonlyMap<string, string>} assetMap
- * @returns {Promise<void>}
- */
-const buildMarkdownFiles = async assetMap => {
-  for await (const dirent of await opendir(CONTENT_SRC_DIR, {
-    recursive: true,
-  })) {
-    if (!dirent.isFile() || extname(dirent.name) !== '.md') {
-      continue;
-    }
-
-    const srcFilePath = getFilePath(dirent);
-    const filePath = relativePath(CONTENT_SRC_DIR, srcFilePath);
-    const buildFilePath = joinPath(CONTENT_BUILD_DIR, filePath);
-
-    let srcFileStr = await readFile(srcFilePath, 'utf8');
-    for (const [assetRelativePath, dataUrl] of assetMap.entries()) {
-      const expectedAssetDir = joinPath('assets', filePath).replace(/.md$/, '');
-      if (joinPath(assetRelativePath, '..') !== expectedAssetDir) {
-        continue;
-      }
-      srcFileStr = srcFileStr.replaceAll(
-        `"${assetRelativePath.replace(
-          expectedAssetDir,
-          POST_ASSETS_PLACEHOLDER
-        )}"`,
-        `"${dataUrl}"`
-      );
-    }
-    await safeWriteFile(buildFilePath, srcFileStr);
-  }
-};
-
-/**
- * Builds
+ * Builds JSON files for fetch, with asset paths replaced with data URLs.
  *
  * @param {ReadonlyMap<string, string>} assetMap
  * @returns {Promise<void>}
@@ -161,8 +180,7 @@ const main = async () => {
   }
 
   const assetMap = await buildAssetMap();
-  await buildMarkdownMetadata();
-  await buildMarkdownFiles(assetMap);
+  await buildMarkdownMetadata(assetMap);
   await buildJsonFiles(assetMap);
 };
 

@@ -1,11 +1,13 @@
 <script setup lang="ts">
+  import {RouterLink} from 'vue-router';
   import TagsContainer from '../common/TagsContainer.vue';
   import type {LinkInfo} from '../common/utils.ts';
 
   defineProps<{
     note: {
-      title: string;
-      date: string;
+      filename?: string;
+      title?: string;
+      date?: string;
       tags?: LinkInfo[];
     };
   }>();
@@ -15,11 +17,13 @@
   <li :class="$style.container">
     <div :class="$style.titleContainer">
       <h3>
-        <a href="">{{ note.title }}</a>
+        <RouterLink :to="`/notes/${note.filename}`">
+          {{ note.title }}
+        </RouterLink>
       </h3>
       <TagsContainer :tags="note.tags" />
     </div>
-    <span>{{ new Date(note.date).getUTCFullYear() }}</span>
+    <span v-if="note.date">{{ new Date(note.date).getUTCFullYear() }}</span>
   </li>
 </template>
 

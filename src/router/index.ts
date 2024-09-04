@@ -2,6 +2,15 @@ import {createRouter, createWebHistory} from 'vue-router';
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    return {top: 0};
+  },
   routes: [
     {
       path: '/',
@@ -17,6 +26,11 @@ export default createRouter({
       path: '/notes',
       name: 'notes',
       component: () => import('../views/NotesView.vue'),
+    },
+    {
+      path: '/notes/:name',
+      name: 'note',
+      component: () => import('../views/NoteView.vue'),
     },
     {
       path: '/resume',
