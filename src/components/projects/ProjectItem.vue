@@ -9,6 +9,7 @@
     project: {
       title?: string;
       description?: string;
+      date?: string;
       image?: string;
       icons?: Array<LinkInfo & {kind?: LinkType}>;
       tags?: LinkInfo[];
@@ -23,16 +24,21 @@
     <img :src="project.image" :alt="project.title" height="66.75">
     <div :class="$style.textContainer">
       <div :class="$style.titleContainer">
-        <h3>{{ project.title }}</h3>
-        <ul>
-          <ProjectIconItem
-            v-for="icon in project.icons"
-            :key="icon.kind"
-            :kind="icon.kind"
-            :display="icon.display"
-            :link="icon.link"
-          />
-        </ul>
+        <div :class="$style.titleWithIcons">
+          <h3>{{ project.title }}</h3>
+          <ul>
+            <ProjectIconItem
+              v-for="icon in project.icons"
+              :key="icon.kind"
+              :kind="icon.kind"
+              :display="icon.display"
+              :link="icon.link"
+            />
+          </ul>
+        </div>
+        <span v-if="project.date">
+          {{ new Date(project.date).getUTCFullYear() }}
+        </span>
       </div>
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="markdownConverter.makeHtml(project.description ?? '')" />
@@ -56,9 +62,16 @@
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+    width: 100%;
   }
 
   .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .titleWithIcons {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
