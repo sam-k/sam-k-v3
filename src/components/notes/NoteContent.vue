@@ -1,9 +1,10 @@
 <script async setup lang="ts">
   import showdown from 'showdown';
+  import {getNote} from '../../api/index.ts';
 
   const props = defineProps<{name: string}>();
 
-  const data = await import(`../../../content-build/posts/${props.name}.json`);
+  const data = await getNote(props.name);
 
   const markdownConverter = new showdown.Converter({
     metadata: true,

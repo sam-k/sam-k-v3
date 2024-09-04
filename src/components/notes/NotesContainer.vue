@@ -1,10 +1,10 @@
 <script setup lang="ts">
+  import {listNotes} from '../../api/index.ts';
   import NoteItem from './NoteItem.vue';
 
   const props = defineProps<{featured?: boolean}>();
-  const data = await (
-    await fetch(`/api/posts${props.featured ? '/featured' : ''}`)
-  ).json();
+
+  const data = await listNotes(props.featured);
 </script>
 
 <template>

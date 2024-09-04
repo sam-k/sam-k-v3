@@ -4,6 +4,7 @@
     "@vue/tsconfig/tsconfig.dom.json"
   ],
   "include": [
+    "content-build/**/*.json",
     "env.d.ts",
     "src/**/*.ts",
     "src/**/*.vue"
