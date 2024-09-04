@@ -53,7 +53,7 @@
   main {
     display: flex;
     flex-direction: column;
-    row-gap: 5rem;
+    row-gap: 6rem;
   }
 
   .introContainer {

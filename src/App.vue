@@ -111,17 +111,15 @@
   }
 
   .viewContainer {
-    --view-container-top-padding: calc(var(--nav-height) + 5rem);
+    --view-container-top-padding: calc(var(--nav-height) + 6rem);
     --view-container-bottom-padding: var(--nav-height);
 
     min-height: calc(
       100vh - var(--nav-height) - var(--view-container-top-padding) -
-        var(--view-container-bottom-padding) - 2 *
-        var(--header-footer-border-width)
+        var(--nav-height) - 2 * var(--header-footer-border-width)
     );
     margin: 0 auto;
-    padding: var(--view-container-top-padding) 0
-      var(--view-container-bottom-padding) 0;
+    padding: var(--view-container-top-padding) 0 6rem 0;
   }
 
   footer {
