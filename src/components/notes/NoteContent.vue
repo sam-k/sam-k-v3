@@ -12,8 +12,14 @@
     ghCompatibleHeaderId: true,
   });
   const htmlContent = markdownConverter.makeHtml(data.markdown);
-  const metadata =
-    parseYaml(markdownConverter.getMetadata(/* raw= */ true) as string);
+  // Manual restore `$` characters.
+  // See https://github.com/showdownjs/showdown/wiki/extensions#gotchas
+  const metadata = parseYaml(
+    (markdownConverter.getMetadata(/* raw= */ true) as string).replaceAll(
+      '¨D',
+      '$'
+    )
+  );
 </script>
 
 <template>

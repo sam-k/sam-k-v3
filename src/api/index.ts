@@ -14,6 +14,9 @@ export const listProjects = async (featured?: boolean) => {
 export const listNotes = async (featured?: boolean) => {
   const data = (await import('../../content-build/posts/metadata.json'))
     .default;
+  data.metadata.sort(
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+  );
   if (!featured) {
     return data;
   }

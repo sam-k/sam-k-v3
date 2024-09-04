@@ -60,6 +60,7 @@ const buildMarkdownMetadata = async () => {
 
     const markdownConverter = new showdown.Converter({metadata: true});
     markdownConverter.makeHtml(await readFile(srcFilePath, 'utf8'));
+    console.log(markdownConverter.getMetadata(/* raw= */ true));
     const metadata = {
       filename: dirent.name.replace(/.md$/, ''),
       ...parseYaml(markdownConverter.getMetadata(/* raw= */ true)),
@@ -72,13 +73,15 @@ const buildMarkdownMetadata = async () => {
   }
 
   for (const [fileDir, metadataArr] of metadataMap.entries()) {
+    // Manual restore `$` characters.
+    // See https://github.com/showdownjs/showdown/wiki/extensions#gotchas
     await safeWriteFile(
       joinPath(CONTENT_BUILD_DIR, fileDir, 'metadata.json'),
       JSON.stringify(
         {metadata: metadataArr},
         /* replacer= */ null,
         /* space= */ 2
-      )
+      ).replaceAll('¨D', '$')
     );
   }
 };
