@@ -20,7 +20,7 @@
   .textContainer {
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    gap: 2rem;
     margin: auto;
     padding: 2rem;
     text-align: center;

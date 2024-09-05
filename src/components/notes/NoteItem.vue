@@ -23,7 +23,9 @@
       </h3>
       <TagsContainer :tags="note.tags" />
     </div>
-    <span v-if="note.date">{{ new Date(note.date).getUTCFullYear() }}</span>
+    <span v-if="note.date" :class="$style.date">
+      {{ new Date(note.date).getUTCFullYear() }}
+    </span>
   </li>
 </template>
 
@@ -32,12 +34,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: 1rem;
+    gap: 1rem;
   }
 
   .titleContainer {
+    width: 100%;
     display: flex;
     align-items: center;
-    column-gap: 0.5rem;
+    gap: 0.5rem;
+
+    @media (width < 1024px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .date {
+    text-align: end;
+    text-wrap: nowrap;
   }
 </style>

@@ -25,7 +25,7 @@
   .container {
     display: flex;
     align-items: center;
-    column-gap: 1rem;
+    gap: 1rem;
 
     --legend-stop-diameter: 1.75rem;
     --legend-line-length: 4rem;

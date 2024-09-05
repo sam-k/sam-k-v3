@@ -21,7 +21,8 @@
         var(--gutter-center-x-offset) - 1.5 * var(--line-width) -
           var(--line-gap) - var(--stop-border-width)
       ),
-      -5 * var(--line-width) - 4 * var(--line-gap) - var(--stop-border-width)
+      -5 * var(--line-width) - 4 * var(--line-gap) - 1rem -
+        var(--stop-border-width)
     );
 
     width: 100%;

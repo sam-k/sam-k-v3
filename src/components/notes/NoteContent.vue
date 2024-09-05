@@ -27,7 +27,7 @@
     <h1>{{ metadata.title }}</h1>
     <div :class="$style.dateline">
       <p>By <b>{{ metadata.author }}</b></p>
-      <p>{{ metadata.date }}</p>
+      <p :class="$style.date">{{ metadata.date }}</p>
     </div>
     <hr>
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -39,7 +39,7 @@
   .container {
     * {
       /* TODO: Fix scrolling CSS instead of relying on this workaround. */
-      scroll-margin-top: var(--nav-height);
+      scroll-margin-top: calc(var(--nav-height) + 1rem);
     }
 
     h1 {
@@ -104,5 +104,9 @@
   .dateline {
     display: flex;
     justify-content: space-between;
+  }
+
+  .date {
+    text-align: end;
   }
 </style>

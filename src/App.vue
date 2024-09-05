@@ -48,13 +48,14 @@
   <RouterView :class="[$style.container, $style.viewContainer]" />
   <footer>
     <div :class="[$style.container, $style.footerContainer]">
-      <span>Map not to scale</span>
+      <span :class="$style.footerItem">Map not to scale</span>
       <span>•</span>
-      <span>© 2024 Sam Kim</span>
+      <span :class="$style.footerItem">© 2024 Sam Kim</span>
       <span>•</span>
       <a
         href="https://github.com/sam-k/sam-k-v3"
         aria-label="Under the hood"
+        :class="$style.footerItem"
       >
         Under the hood ↗
       </a>
@@ -87,6 +88,18 @@
     margin: 0 auto;
 
     --nav-underline-thickness: 0.375rem;
+
+    @media (width < 768px) {
+      max-width: 100%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (width < 568px) {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+    }
   }
 
   .home {
@@ -102,24 +115,33 @@
   nav {
     display: flex;
     align-items: center;
-    column-gap: 1rem;
+    gap: 1rem;
 
     a,
     .darkModeButton {
       font-weight: 500;
     }
+
+    @media (width < 360px) {
+      gap: unset;
+    }
   }
 
   .viewContainer {
     --view-container-top-padding: calc(var(--nav-height) + 6rem);
-    --view-container-bottom-padding: var(--nav-height);
+    --view-container-bottom-padding: var(--footer-height);
 
     min-height: calc(
       100vh - var(--nav-height) - var(--view-container-top-padding) -
-        var(--nav-height) - 2 * var(--header-footer-border-width)
+        var(--footer-height) - 2 * var(--header-footer-border-width)
     );
     margin: 0 auto;
     padding: var(--view-container-top-padding) 0 6rem 0;
+
+    @media (width < 666px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   footer {
@@ -127,7 +149,7 @@
     position: relative;
     bottom: 0;
     width: 100%;
-    height: var(--nav-height);
+    height: var(--footer-height);
     border-top: var(--header-footer-border-width) solid var(--color-border);
     background-color: var(--color-background);
   }
@@ -137,7 +159,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 0.5rem;
+    gap: 0.5rem;
     margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .footerItem {
+    text-align: center;
   }
 </style>

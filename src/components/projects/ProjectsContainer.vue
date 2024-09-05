@@ -21,6 +21,6 @@
   .container {
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    gap: 2rem;
   }
 </style>

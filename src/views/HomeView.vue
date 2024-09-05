@@ -53,25 +53,31 @@
   main {
     display: flex;
     flex-direction: column;
-    row-gap: 6rem;
+    gap: 6rem;
   }
 
   .introContainer {
     display: flex;
     justify-content: space-between;
-    column-gap: 3rem;
+    gap: 3rem;
     padding: 2.5rem 0;
+
+    @media (width < 1024px) {
+      flex-direction: column;
+      gap: 3rem;
+      padding: 0;
+    }
   }
 
   .introTextContainer {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 1rem;
   }
 
   .blockContainer {
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    gap: 2rem;
   }
 </style>

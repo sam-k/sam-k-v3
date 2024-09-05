@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: var(--nav-underline-thickness);
+    gap: var(--nav-underline-thickness);
     padding: 0.25rem;
     width: 4rem;
 
