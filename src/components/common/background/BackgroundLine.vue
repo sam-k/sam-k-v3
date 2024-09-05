@@ -36,7 +36,7 @@
         var(--gutter-center-x-offset) + 0.5 * var(--line-width) +
           var(--line-gap)
       ),
-      -3 * var(--line-width) - 2 * var(--line-gap)
+      -3 * var(--line-width) - 2 * var(--line-gap) - 1rem
     );
     --line-color: color-mix(
       in srgb,

@@ -36,6 +36,18 @@
   --max-width: 800px;
   --rounded-rectangle-border-radius: 999999px;
   --underline-transition-speed: 250ms;
+
+  @media (width >= 768px) and (width < 1024px) {
+    --max-width: 550px;
+  }
+
+  @media (width >= 666px) and (width < 768px) {
+    --max-width: 450px;
+  }
+
+  @media (width < 666px) {
+    --max-width: 100%;
+  }
 }
 
 :root.dark {

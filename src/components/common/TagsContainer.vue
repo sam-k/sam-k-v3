@@ -18,7 +18,8 @@
   .tags {
     display: flex;
     align-items: center;
-    column-gap: 0.5rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 
     a {
       background-color: var(--color-background-mute);

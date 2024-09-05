@@ -58,6 +58,10 @@
     display: flex;
     flex-direction: column;
     border: 1px solid var(--color-border);
+
+    @media (width < 1024px) {
+      margin: 0 auto;
+    }
   }
 
   .header {

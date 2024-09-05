@@ -72,13 +72,15 @@ const buildMarkdownMetadata = async () => {
   }
 
   for (const [fileDir, metadataArr] of metadataMap.entries()) {
+    // Manual restore `$` characters.
+    // See https://github.com/showdownjs/showdown/wiki/extensions#gotchas
     await safeWriteFile(
       joinPath(CONTENT_BUILD_DIR, fileDir, 'metadata.json'),
       JSON.stringify(
         {metadata: metadataArr},
         /* replacer= */ null,
         /* space= */ 2
-      )
+      ).replaceAll('¨D', '$')
     );
   }
 };

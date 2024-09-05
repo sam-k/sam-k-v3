@@ -12,8 +12,14 @@
     ghCompatibleHeaderId: true,
   });
   const htmlContent = markdownConverter.makeHtml(data.markdown);
-  const metadata =
-    parseYaml(markdownConverter.getMetadata(/* raw= */ true) as string);
+  // Manual restore `$` characters.
+  // See https://github.com/showdownjs/showdown/wiki/extensions#gotchas
+  const metadata = parseYaml(
+    (markdownConverter.getMetadata(/* raw= */ true) as string).replaceAll(
+      '¨D',
+      '$'
+    )
+  );
 </script>
 
 <template>
@@ -21,7 +27,7 @@
     <h1>{{ metadata.title }}</h1>
     <div :class="$style.dateline">
       <p>By <b>{{ metadata.author }}</b></p>
-      <p>{{ metadata.date }}</p>
+      <p :class="$style.date">{{ metadata.date }}</p>
     </div>
     <hr>
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -33,7 +39,7 @@
   .container {
     * {
       /* TODO: Fix scrolling CSS instead of relying on this workaround. */
-      scroll-margin-top: var(--nav-height);
+      scroll-margin-top: calc(var(--nav-height) + 1rem);
     }
 
     h1 {
@@ -98,5 +104,9 @@
   .dateline {
     display: flex;
     justify-content: space-between;
+  }
+
+  .date {
+    text-align: end;
   }
 </style>

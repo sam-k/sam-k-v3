@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 6px;
+    gap: 6px;
     height: 1.6rem;
     padding: 0 6px;
     border: 1px solid var(--color-border);

@@ -8,6 +8,7 @@ const config = {
   },
   rules: {
     eqeqeq: ['error', 'always', {null: 'ignore'}],
+    'no-irregular-whitespace': 'off',
   },
   overrides: [
     {

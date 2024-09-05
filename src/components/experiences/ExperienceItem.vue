@@ -30,12 +30,16 @@
   <li :class="$style.container">
     <div :class="$style.headerContainer">
       <h3 :class="$style.titleContainer">
-        <span>{{ experience.role }}</span>
-        <span>•</span>
+        {{ experience.role }}
+        •
         <a :href="experience.org?.link">{{ experience.org?.display }}</a>
       </h3>
-      <span v-if="startYear === endYear">{{ startYear }}</span>
-      <span v-if="startYear !== endYear">{{ startYear }} – {{ endYear }}</span>
+      <span v-if="startYear === endYear" :class="$style.date">
+        {{ startYear }}
+      </span>
+      <span v-if="startYear !== endYear" :class="$style.date">
+        {{ startYear }} – {{ endYear }}
+      </span>
     </div>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="markdownConverter.makeHtml(experience.description ?? '')" />
@@ -47,25 +51,29 @@
   .container {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 1rem;
   }
 
   .headerContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .titleContainer {
-    display: flex;
-    align-items: center;
-    column-gap: 0.5rem;
+    width: 100%;
+  }
+
+  .date {
+    text-align: end;
+    text-wrap: nowrap;
   }
 
   .tags {
     display: flex;
     align-items: center;
-    column-gap: 0.5rem;
+    gap: 0.5rem;
 
     a {
       background-color: var(--color-background-mute);
