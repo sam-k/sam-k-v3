@@ -27,11 +27,18 @@ export default reactive({
       rootEl?.classList.remove(DARK_MODE_CLASSNAME);
     }
 
-    const faviconEl = document.getElementById('favicon');
-    faviconEl?.setAttribute(
-      'href',
-      this.isDarkMode ? '/favicon_dark.svg' : '/favicon.svg'
-    );
+    document.querySelectorAll('[id^="favicon-svg-"]')?.forEach(el => {
+      el.setAttribute(
+        'href',
+        this.isDarkMode ? '/favicon_dark.svg' : '/favicon.svg'
+      );
+    });
+    document.querySelectorAll('[id^="favicon-ico-"]')?.forEach(el => {
+      el.setAttribute(
+        'href',
+        this.isDarkMode ? '/favicon_dark.ico' : '/favicon.ico'
+      );
+    });
   },
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
