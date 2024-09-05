@@ -13,22 +13,25 @@ export default reactive({
     );
   })(),
   applyDarkMode(isInitialRender = false) {
-    const rootEl = document.querySelector(':root');
-    if (!rootEl) {
-      return;
-    }
-
     if (!isInitialRender) {
       localStorage.setItem(
         DARK_MODE_STORAGE_KEY,
         this.isDarkMode ? 'true' : 'false'
       );
     }
+
+    const rootEl = document.querySelector(':root');
     if (this.isDarkMode) {
-      rootEl.classList.add(DARK_MODE_CLASSNAME);
+      rootEl?.classList.add(DARK_MODE_CLASSNAME);
     } else {
-      rootEl.classList.remove(DARK_MODE_CLASSNAME);
+      rootEl?.classList.remove(DARK_MODE_CLASSNAME);
     }
+
+    const faviconEl = document.getElementById('favicon');
+    faviconEl?.setAttribute(
+      'href',
+      this.isDarkMode ? '/favicon_dark.svg' : '/favicon.svg'
+    );
   },
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;

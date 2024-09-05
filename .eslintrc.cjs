@@ -21,6 +21,7 @@ const config = {
       extends: ['plugin:@html-eslint/recommended'],
       parser: '@html-eslint/parser',
       rules: {
+        '@html-eslint/attrs-newline': 'off',
         '@html-eslint/indent': ['error', 2],
         '@html-eslint/lowercase': 'error',
         '@html-eslint/no-extra-spacing-attrs': [
