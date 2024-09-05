@@ -59,7 +59,7 @@ const buildMarkdownMetadata = async () => {
     const fileDir = relativePath(CONTENT_SRC_DIR, joinPath(srcFilePath, '..'));
 
     const markdownConverter = new showdown.Converter({metadata: true});
-    markdownConverter.makeHtml(await readFile(srcFilePath, 'utf8')); 
+    markdownConverter.makeHtml(await readFile(srcFilePath, 'utf8'));
     const metadata = {
       filename: dirent.name.replace(/.md$/, ''),
       ...parseYaml(markdownConverter.getMetadata(/* raw= */ true)),
