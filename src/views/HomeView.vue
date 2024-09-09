@@ -53,7 +53,7 @@
   main {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: var(--separator-height);
   }
 
   .introContainer {

@@ -128,7 +128,9 @@
   }
 
   .viewContainer {
-    --view-container-top-padding: calc(var(--nav-height) + 6rem);
+    --view-container-top-padding: calc(
+      var(--nav-height) + var(--separator-height)
+    );
     --view-container-bottom-padding: var(--footer-height);
 
     min-height: calc(
@@ -136,7 +138,7 @@
         var(--footer-height) - 2 * var(--header-footer-border-width)
     );
     margin: 0 auto;
-    padding: var(--view-container-top-padding) 0 6rem 0;
+    padding: var(--view-container-top-padding) 0 var(--separator-height) 0;
 
     @media (width < 666px) {
       padding-left: 2rem;

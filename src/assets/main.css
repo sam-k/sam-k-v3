@@ -24,9 +24,23 @@ body {
   --nav-z-index: 999999;
   --nav-height: 5.6875rem;
   --footer-height: 5.6875rem;
+  --separator-height: 10rem;
+
+  @media (width >= 768px) and (width < 1024px) {
+    --separator-height: 8rem;
+  }
+
+  @media (width >= 666px) and (width < 768px) {
+    --separator-height: 7rem;
+  }
+
+  @media (width >= 568px) and (width < 666px) {
+    --separator-height: 6rem;
+  }
 
   @media (width < 568px) {
     --nav-height: 8.1875rem;
+    --separator-height: 4rem;
   }
 }
 
