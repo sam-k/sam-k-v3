@@ -24,19 +24,44 @@
 
 <template>
   <div :class="$style.container">
-    <h1>{{ metadata.title }}</h1>
-    <div :class="$style.dateline">
-      <p>By <b>{{ metadata.author }}</b></p>
-      <p :class="$style.date">{{ metadata.date }}</p>
+    <div :class="$style.header">
+      <h1>{{ metadata.title }}</h1>
+      <h2>{{ metadata.subtitle }}</h2>
+      <div :class="$style.dateline">
+        <p>By <b>{{ metadata.author }}</b></p>
+        <p :class="$style.date">{{ metadata.date }}</p>
+      </div>
     </div>
     <hr>
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="htmlContent" />
+    <div :class="$style.content" v-html="htmlContent" />
   </div>
 </template>
 
 <style module>
-  .container {
+  .header {
+    h1 {
+      margin: 1rem 0;
+      font-size: 3rem;
+    }
+
+    h2 {
+      margin: 1rem 0;
+      font-size: 2rem;
+    }
+
+    .dateline {
+      display: flex;
+      justify-content: space-between;
+      margin: var(--separator-height) 0 1rem 0;
+    }
+
+    .date {
+      text-align: end;
+    }
+  }
+
+  .content {
     * {
       /* TODO: Fix scrolling CSS instead of relying on this workaround. */
       scroll-margin-top: calc(var(--nav-height) + 1rem);
@@ -99,14 +124,5 @@
         background-color: var(--color-background-mute);
       }
     }
-  }
-
-  .dateline {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .date {
-    text-align: end;
   }
 </style>
