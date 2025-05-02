@@ -5,7 +5,7 @@
 <template>
   <div :class="$style.container">
     <div :class="$style.textContainer">
-      <h1>ATTN: Page Not Found</h1>
+      <h1 aria-label="Attention: Page Not Found">ATTN: Page Not Found</h1>
       <p>Trains are not stopping at the page you’re looking for.</p>
     </div>
     <RandomBackgroundLine v-for="i in 8" :key="i" />
