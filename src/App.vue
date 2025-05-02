@@ -49,9 +49,9 @@
   <footer>
     <div :class="[$style.container, $style.footerContainer]">
       <span :class="$style.footerItem">Map not to scale</span>
-      <span>•</span>
+      <span :class="$style.footerDelimiter" aria-hidden="true">•</span>
       <span :class="$style.footerItem">© 2025 Sam Kim</span>
-      <span>•</span>
+      <span :class="$style.footerDelimiter" aria-hidden="true">•</span>
       <a
         href="https://github.com/sam-k/sam-k-v3"
         aria-label="Under the hood"
@@ -168,5 +168,9 @@
 
   .footerItem {
     text-align: center;
+  }
+
+  .footerDelimiter {
+    user-select: none;
   }
 </style>
