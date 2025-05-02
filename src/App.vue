@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import {RouterLink, RouterView} from 'vue-router';
+  import DotDelimiter from './components/common/DotDelimiter.vue';
   import WeatherNightIcon from './components/icons/WeatherNightIcon.vue';
   import WeatherSunnyIcon from './components/icons/WeatherSunnyIcon.vue';
   import NavHeaderItem from './components/nav/NavHeaderItem.vue';
@@ -49,9 +50,9 @@
   <footer>
     <div :class="[$style.container, $style.footerContainer]">
       <span :class="$style.footerItem">Map not to scale</span>
-      <span :class="$style.footerDelimiter" aria-hidden="true">•</span>
+      <DotDelimiter />
       <span :class="$style.footerItem">© 2025 Sam Kim</span>
-      <span :class="$style.footerDelimiter" aria-hidden="true">•</span>
+      <DotDelimiter />
       <a
         href="https://github.com/sam-k/sam-k-v3"
         aria-label="Under the hood"
@@ -168,9 +169,5 @@
 
   .footerItem {
     text-align: center;
-  }
-
-  .footerDelimiter {
-    user-select: none;
   }
 </style>
