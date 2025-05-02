@@ -50,7 +50,7 @@
     <div :class="[$style.container, $style.footerContainer]">
       <span :class="$style.footerItem">Map not to scale</span>
       <span>•</span>
-      <span :class="$style.footerItem">© 2024 Sam Kim</span>
+      <span :class="$style.footerItem">© 2025 Sam Kim</span>
       <span>•</span>
       <a
         href="https://github.com/sam-k/sam-k-v3"

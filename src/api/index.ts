@@ -1,3 +1,6 @@
+export const getIntro = async () =>
+  (await import('../../content-build/data/intro.json')).default;
+
 export const getPersonal = async () =>
   (await import('../../content-build/data/personal.json')).default;
 

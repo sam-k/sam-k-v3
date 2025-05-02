@@ -40,6 +40,7 @@
         color: var(--color-text);
         text-decoration:
           underline v-bind(color) solid var(--nav-underline-thickness);
+        text-decoration-skip-ink: none;
       }
     }
   }
@@ -57,6 +58,7 @@
       font-size: 1.75rem;
       font-weight: 700;
       color: v-bind(iconColor);
+      user-select: none;
     }
 
     svg {
