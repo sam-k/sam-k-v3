@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import showdown from 'showdown';
+  import DotDelimiter from '../common/DotDelimiter.vue';
   import TagsContainer from '../common/TagsContainer.vue';
   import type {LinkInfo} from '../common/utils.ts';
 
@@ -29,17 +30,19 @@
 <template>
   <li :class="$style.container">
     <div :class="$style.headerContainer">
-      <h3 :class="$style.titleContainer">
-        {{ experience.role }}
-        •
+      <h3 :class="$style.titleContainer" aria-hidden="true">
+        <span>{{ experience.role }}</span>
+        <DotDelimiter />
         <a :href="experience.org?.link">{{ experience.org?.display }}</a>
       </h3>
+      <h3 class="sr-only">{{ experience.role }} at</h3>
+      <a class="sr-only" :href="experience.org?.link">
+        {{ experience.org?.display }}
+      </a>
       <span v-if="startYear === endYear" :class="$style.date">
         {{ startYear }}
       </span>
-      <span v-if="startYear !== endYear" :class="$style.date">
-        {{ startYear }} – {{ endYear }}
-      </span>
+      <span v-else :class="$style.date">{{ startYear }} – {{ endYear }}</span>
     </div>
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="markdownConverter.makeHtml(experience.description ?? '')" />
@@ -63,6 +66,9 @@
 
   .titleContainer {
     width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
   }
 
   .date {
